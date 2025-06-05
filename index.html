@@ -7,6 +7,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles for project links */
+        .project-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        
+        .project-link i {
+            font-size: 12px;
+        }
+        
+        .project-link.secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .project-link.secondary:hover {
+            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -112,6 +154,11 @@
                     <span class="tech-tag">MySQL</span>
                     <span class="tech-tag">REST API</span>
                 </div>
+                <div class="project-actions">
+                    <a href="https://msacco.online" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Visit Site
+                    </a>
+                </div>
             </div>
             
             <div class="project-card">
@@ -152,6 +199,11 @@
                     <span class="tech-tag">Laravel</span>
                     <span class="tech-tag">Chart.js</span>
                     <span class="tech-tag">MySQL</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://neurotechsystemsltd.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Visit Site
+                    </a>
                 </div>
             </div>
         </div>
