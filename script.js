@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Read More Functionality - Single Implementation
+    // Read More Functionality for Blog Section
     const readMoreBtn = document.getElementById('readMoreBtn');
     const blogContent = document.getElementById('blogContent');
 
@@ -43,6 +43,31 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 blogContent.classList.add('expanded');
                 readMoreBtn.textContent = 'Read Less';
+            }
+        });
+    }
+
+    // Read More Functionality for About Section
+    const aboutReadMoreBtn = document.getElementById('aboutReadMoreBtn');
+    const aboutContent = document.getElementById('aboutContent');
+
+    if (aboutReadMoreBtn && aboutContent) {
+        // Initially hide the extra content
+        aboutContent.style.maxHeight = '200px';
+        aboutContent.style.overflow = 'hidden';
+        aboutContent.style.transition = 'max-height 0.3s ease';
+        
+        aboutReadMoreBtn.addEventListener('click', function() {
+            if (aboutContent.classList.contains('expanded')) {
+                aboutContent.classList.remove('expanded');
+                aboutContent.style.maxHeight = '200px';
+                aboutContent.style.overflow = 'hidden';
+                aboutReadMoreBtn.textContent = 'Read More';
+            } else {
+                aboutContent.classList.add('expanded');
+                aboutContent.style.maxHeight = 'none';
+                aboutContent.style.overflow = 'visible';
+                aboutReadMoreBtn.textContent = 'Read Less';
             }
         });
     }
