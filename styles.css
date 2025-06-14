@@ -35,6 +35,7 @@ header {
   top: 0;
   width: 100%;
   background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
@@ -156,7 +157,6 @@ nav {
   margin-bottom: 2rem;
   max-width: min(500px, 90vw);
   text-align: justify;
-  text-justify: inter-word;
 }
 
 .hero-buttons {
@@ -380,7 +380,6 @@ section {
   margin-bottom: 1.5rem;
   line-height: 1.6;
   text-align: justify;
-  text-justify: inter-word;
   font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
@@ -461,7 +460,6 @@ section {
   margin-bottom: 1.5rem;
   line-height: 1.6;
   text-align: justify;
-  text-justify: inter-word;
   font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
@@ -522,7 +520,6 @@ section {
 
 .contact-item p {
   text-align: justify;
-  text-justify: inter-word;
   font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
@@ -582,7 +579,6 @@ section {
 /* Additional responsive utilities */
 .text-justify {
   text-align: justify;
-  text-justify: inter-word;
 }
 
 .container-fluid {
@@ -595,7 +591,6 @@ section {
   font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.6;
   text-align: justify;
-  text-justify: inter-word;
 }
 
 /* Footer */
