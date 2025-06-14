@@ -721,7 +721,7 @@ Source: Peter Blessings Kaphaso Portfolio
             </div>
         `;
         
-        this.notifications.show(message, 'success', 5000);
+        this.notifications.show(message, 'success', 10000);
         
         // Track success
         this.trackEvent('contact_form_success', { name: data.name, email: data.email });
