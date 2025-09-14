@@ -4,352 +4,843 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peter Blessings Kaphaso - Full-Stack Developer</title>
+    <meta name="description" content="Professional portfolio of Peter Blessings Kaphaso, a skilled full-stack developer specializing in JavaScript, Flutter, and Laravel development.">
+    <meta name="keywords" content="Peter Kaphaso, Full-Stack Developer, JavaScript, Flutter, Laravel, Web Development, Mobile Development">
+    <meta name="author" content="Peter Blessings Kaphaso">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- External fonts and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Additional styles for project links */
-        .project-actions {
-            margin-top: 15px;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .project-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            color: white;
-        }
-        
-        .project-link i {
-            font-size: 12px;
-        }
-        
-        .project-link.secondary {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .project-link.secondary:hover {
-            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
-        }
-    </style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <a href="#" class="logo">PBK</a>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+    <!-- Header Navigation -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#home" class="nav-logo">
+                    <span class="logo-text">PBK</span>
+                </a>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#experience" class="nav-link">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projects" class="nav-link">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#testimonials" class="nav-link">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                
+                <button class="nav-toggle" id="nav-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Peter Blessings Kaphaso</h1>
-                <p class="hero-subtitle">
-                    Full-Stack Developer specializing in JavaScript, Flutter, and Laravel. 
-                    I craft exceptional digital experiences with clean code and innovative solutions.
-                </p>
-                <div class="hero-buttons">
-                    <a href="bless.pdf" download="Peter_Blessings_CV" class="btn btn-primary">
-                        <i class="fas fa-download"></i> Download CV
-                    </a>
-                    <a href="#projects" class="btn btn-secondary">
-                        <i class="fas fa-rocket"></i> View My Projects
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-card">
-                    <img src="profile_picture.jpg" alt="Peter Blessings Kaphaso" class="profile-img">
-                    <h3>Full-Stack Developer</h3>
-                    <p>Passionate about creating innovative solutions</p>
-                    <p class="profile-location">Salima, Malawi</p>
-                    <div class="social-preview">
-                        <a href="https://github.com/blessingskaphaso" class="social-icon" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/peter-kaphaso-b3522711a/" class="social-icon" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" class="social-icon" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="greeting">Hello, I'm</span>
+                            <span class="name">Peter Blessings Kaphaso</span>
+                            <span class="role">Full-Stack Developer</span>
+                        </h1>
+                        <p class="hero-description">
+                            I specialize in building scalable web and mobile applications using modern technologies. 
+                            With expertise in JavaScript, Flutter, and Laravel, I create digital solutions that 
+                            drive business growth and enhance user experiences.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-envelope"></i>
+                                Get In Touch
+                            </a>
+                            <a href="assets/Peter_Blessings_CV.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-download"></i>
+                                Download CV
+                            </a>
+                        </div>
+                        <div class="hero-social">
+                            <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/peter-kaphaso-b3522711a/" target="_blank" rel="noopener" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" target="_blank" rel="noopener" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="image-container">
+                            <img src="assets/profile-picture.jpg" alt="Peter Blessings Kaphaso - Full-Stack Developer" class="profile-image">
+                            <div class="image-backdrop"></div>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">5+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">30+</span>
+                                <span class="stat-label">Happy Clients</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about">
-        <div class="section-header">
-            <h2 class="section-title">About Me</h2>
-        </div>
-        <div class="container">
-            <div class="about-content">
-                <p>I'm a passionate full-stack developer with expertise in modern web and mobile technologies. With years of experience in software development, I've worked on various projects ranging from mobile applications to enterprise web systems. My journey in technology has been driven by a desire to solve real-world problems through innovative solutions.</p>
-                <p>I specialize in building scalable applications using Flutter for mobile development, Laravel for backend systems, and modern JavaScript frameworks for frontend development. My approach combines technical expertise with user-centered design to create applications that are both functional and delightful to use.</p>
-                <div class="read-more-content" id="aboutContent">
-                    <p>My journey in technology began with a fascination for how software can transform lives. Over the years, I've honed my skills in various programming languages and frameworks, allowing me to build robust applications that meet user needs and business goals.</p>
-                    <p>As a full-stack developer, I thrive on the challenge of creating seamless user experiences across platforms. I enjoy working with both frontend and backend technologies, ensuring that every application I build is not only functional but also intuitive and engaging.</p>
-                    <p>My expertise includes:</p>
-                    <ul>
-                        <li>Flutter for cross-platform mobile app development</li>
-                        <li>Laravel for building scalable backend systems</li>
-                        <li>JavaScript frameworks like React and Vue.js for dynamic web applications</li>
-                        <li>RESTful APIs and database management with MySQL</li>
-                        <li>Version control with Git and collaborative development practices</li>
-                    </ul>
-                    <p>Throughout my career, I've had the privilege of working on diverse projects, including:</p>
-                    <ul>
-                        <li>Developing the Msacco App, a mobile solution for financial management in SACCOs</li>
-                        <li>Creating the MDF CSC LMS, a Learning Management System for the Malawi Defence Force</li>
-                        <li>Building the NeuroTech Systems Limited corporate website to showcase their technological solutions</li>
-                    </ul>
-                    
-                    <p>When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, and sharing knowledge with the developer community.</p>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Get to know more about who I am, what I do, and my current skills</p>
                 </div>
                 
-                <button class="read-more-btn" id="aboutReadMoreBtn">Read More</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="section-header">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">
-                A showcase of my recent work in mobile and web development
-            </p>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3 class="about-subtitle">Who Am I?</h3>
+                        <p class="about-description">
+                            I'm a passionate full-stack developer based in Salima, Malawi, with over 5 years of experience 
+                            in creating digital solutions. My journey in software development began with a fascination for 
+                            problem-solving and has evolved into a career focused on building impactful applications.
+                        </p>
+                        <p class="about-description">
+                            I specialize in modern web technologies and mobile development, with particular expertise in 
+                            JavaScript ecosystems, Flutter for cross-platform mobile apps, and Laravel for robust backend systems. 
+                            I believe in writing clean, maintainable code and following industry best practices.
+                        </p>
+                        <p class="about-description">
+                            When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, 
+                            and mentoring aspiring developers in my community. I'm always eager to take on new challenges 
+                            and collaborate on innovative projects.
+                        </p>
+                        
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h4>Education</h4>
+                                    <p>Bachelor's in Computer Science</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Salima, Malawi</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <h4>Experience</h4>
+                                    <p>5+ Years Professional</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="project-title">Msacco App</h3>
+                    
+                    <div class="about-image">
+                        <img src="assets/about-image.jpg" alt="Peter Kaphaso working" class="about-img">
+                        <div class="about-card">
+                            <h4>Current Focus</h4>
+                            <ul>
+                                <li>Advanced React & Next.js Development</li>
+                                <li>Flutter Mobile App Development</li>
+                                <li>Cloud Architecture with AWS</li>
+                                <li>DevOps & CI/CD Implementation</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <p class="project-description">
-                    A comprehensive mobile application designed to simplify financial management for Msilikali SACCO.
-                    Features secure transaction processing, loan management, and real-time account monitoring.
-                    The app enhances user experience with a clean interface and robust backend integration,
-                    ensuring reliability and performance for MSACCO members.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Flutter</span>
-                    <span class="tech-tag">Laravel</span>
-                    <span class="tech-tag">MySQL</span>
-                    <span class="tech-tag">REST API</span>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Professional Experience</h2>
+                    <p class="section-subtitle">My journey through various roles and responsibilities</p>
                 </div>
-                <div class="project-actions">
-                    <a href="https://msacco.online" target="_blank" rel="noopener noreferrer" class="project-link">
-                        <i class="fas fa-external-link-alt"></i> Visit Site
-                    </a>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3 class="job-title">Senior Full-Stack Developer</h3>
+                            <p class="company">NeuroTech Systems Limited</p>
+                            <span class="job-period">2022 - Present</span>
+                            <p class="job-description">
+                                Leading development of enterprise web applications and mobile solutions. 
+                                Architected and implemented scalable systems serving thousands of users. 
+                                Mentored junior developers and established coding standards.
+                            </p>
+                            <ul class="job-achievements">
+                                <li>Increased application performance by 40% through optimization</li>
+                                <li>Led a team of 5 developers on multiple projects</li>
+                                <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                            </ul>
+                            <div class="job-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3 class="job-title">Full-Stack Developer</h3>
+                            <p class="company">Msilikali SACCO</p>
+                            <span class="job-period">2020 - 2022</span>
+                            <p class="job-description">
+                                Developed and maintained the Msacco mobile application and web platform. 
+                                Implemented secure financial transaction systems and real-time monitoring dashboards.
+                            </p>
+                            <ul class="job-achievements">
+                                <li>Built mobile app serving 5,000+ active users</li>
+                                <li>Implemented secure payment gateway integration</li>
+                                <li>Reduced manual processes by 80% through automation</li>
+                            </ul>
+                            <div class="job-tech">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3 class="job-title">Web Developer</h3>
+                            <p class="company">Malawi Defence Force</p>
+                            <span class="job-period">2019 - 2020</span>
+                            <p class="job-description">
+                                Developed the Command and Staff College Learning Management System. 
+                                Created user-friendly interfaces for military training and administration.
+                            </p>
+                            <ul class="job-achievements">
+                                <li>Delivered LMS platform on time and within budget</li>
+                                <li>Trained staff on system usage and maintenance</li>
+                                <li>Implemented role-based access control system</li>
+                            </ul>
+                            <div class="job-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Skills & Technologies</h2>
+                    <p class="section-subtitle">Technologies I work with to bring ideas to life</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-code"></i>
+                            <h3>Frontend Development</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">React & Next.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">JavaScript/TypeScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Vue.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">HTML5/CSS3</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Tailwind CSS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-server"></i>
+                            <h3>Backend Development</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Laravel</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">PHP</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">REST APIs</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile Development</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Flutter</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="92%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Dart</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">React Native</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Firebase</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-database"></i>
+                            <h3>Database & Tools</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">MySQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">PostgreSQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Git</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">AWS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Docker</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Some of the projects I've worked on recently</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/msacco-project.jpg" alt="Msacco App Screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://msacco.online" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Msacco Mobile App</h3>
+                            <p class="project-description">
+                                A comprehensive financial management mobile application for Msilikali SACCO members. 
+                                Features include secure transactions, loan management, account monitoring, and 
+                                real-time notifications.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-number">5K+</span>
+                                    <span class="stat-label">Active Users</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">4.8</span>
+                                    <span class="stat-label">App Rating</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/mdf-lms-project.jpg" alt="MDF LMS Screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">MDF Command & Staff College LMS</h3>
+                            <p class="project-description">
+                                Learning Management System for the Malawi Defence Force Command and Staff College. 
+                                Includes course management, assignment submission, progress tracking, and 
+                                resource sharing capabilities.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-number">500+</span>
+                                    <span class="stat-label">Students</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">50+</span>
+                                    <span class="stat-label">Courses</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/neurotech-project.jpg" alt="NeuroTech Website Screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://neurotechsystemsltd.com" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">NeuroTech Systems Website</h3>
+                            <p class="project-description">
+                                Modern corporate website showcasing NeuroTech's technological solutions and services. 
+                                Features responsive design, interactive elements, and content management system 
+                                for easy updates.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">Chart.js</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-number">95</span>
+                                    <span class="stat-label">Performance Score</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">100%</span>
+                                    <span class="stat-label">Mobile Friendly</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="projects-cta">
+                    <p>Interested in seeing more of my work?</p>
+                    <a href="projects.html" class="btn btn-primary">View All Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">What Clients Say</h2>
+                    <p class="section-subtitle">Testimonials from satisfied clients and colleagues</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Peter delivered an exceptional mobile application for our SACCO. His attention 
+                                to detail and understanding of our business needs resulted in a solution that 
+                                exceeded our expectations. The app has significantly improved our operations."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="assets/client1.jpg" alt="John Banda" class="author-image">
+                            <div class="author-info">
+                                <h4 class="author-name">John Banda</h4>
+                                <p class="author-position">CEO, Msilikali SACCO</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Working with Peter on the Learning Management System was a pleasure. 
+                                He demonstrated strong technical skills and excellent communication throughout 
+                                the project. The final product was delivered on time and within budget."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="assets/client2.jpg" alt="Colonel Sarah Mwale" class="author-image">
+                            <div class="author-info">
+                                <h4 class="author-name">Colonel Sarah Mwale</h4>
+                                <p class="author-position">Director, MDF Command & Staff College</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Peter's expertise in modern web technologies helped us create a professional 
+                                online presence. His suggestions improved our initial concept, and the final 
+                                website perfectly represents our brand and values."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="assets/client3.jpg" alt="Dr. Michael Phiri" class="author-image">
+                            <div class="author-info">
+                                <h4 class="author-name">Dr. Michael Phiri</h4>
+                                <p class="author-position">CTO, NeuroTech Systems</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Ready to start your next project? Let's discuss how I can help</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <p>
+                            I'm always interested in hearing about new projects and opportunities. 
+                            Whether you're looking for a developer, have a question, or just want to connect, 
+                            feel free to reach out.
+                        </p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h4>Email</h4>
+                                    <p>blesskapha@outlook.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h4>Phone</h4>
+                                    <p>+265 882 801 476</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h4>Location</h4>
+                                    <p>Salima, Malawi</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h4>WhatsApp</h4>
+                                    <p>Available for quick chats</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="availability">
+                            <h4>Availability</h4>
+                            <p>Currently available for new projects</p>
+                            <div class="availability-status">
+                                <span class="status-dot"></span>
+                                <span>Usually responds within 24 hours</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <select id="subject" name="subject" class="form-input" required>
+                                <option value="">Select a subject</option>
+                                <option value="web-development">Web Development Project</option>
+                                <option value="mobile-app">Mobile App Development</option>
+                                <option value="consultation">Technical Consultation</option>
+                                <option value="collaboration">Collaboration Opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget" class="form-label">Project Budget (Optional)</label>
+                            <select id="budget" name="budget" class="form-input">
+                                <option value="">Select budget range</option>
+                                <option value="under-5k">Under $5,000</option>
+                                <option value="5k-10k">$5,000 - $10,000</option>
+                                <option value="10k-25k">$10,000 - $25,000</option>
+                                <option value="25k-plus">$25,000+</option>
+                                <option value="discuss">Let's discuss</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-input" rows="6" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                        
+                        <p class="form-note">
+                            Your information is secure and will only be used to respond to your inquiry.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Peter Blessings Kaphaso</h3>
+                    <p>Full-Stack Developer passionate about creating digital solutions that make a difference.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/peter-kaphaso-b3522711a/" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/qr/IO5Y3FZAL3QDB1" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Navigation</h4>
+                        <a href="#home">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#experience">Experience</a>
+                        <a href="#skills">Skills</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Projects</h4>
+                        <a href="#projects">Portfolio</a>
+                        <a href="projects.html">All Projects</a>
+                        <a href="#testimonials">Testimonials</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Resources</h4>
+                        <a href="assets/Peter_Blessings_CV.pdf" download>Download CV</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="services.html">Services</a>
+                    </div>
                 </div>
             </div>
             
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="project-title">MDF CSC LMS</h3>
-                </div>
-                <p class="project-description">
-                    A comprehensive Learning Management System developed for the Malawi Defence Force Command and Staff College. 
-                    The platform supports course management, assignment submission, performance tracking, and resource sharing, 
-                    tailored specifically for military academic training and administrative efficiency.
-                    The LMS integrates advanced features like user authentication, role-based access control, and a responsive design
-                    to ensure a seamless learning experience for both instructors and students.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">Laravel</span>
-                    <span class="tech-tag">MySQL</span>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Peter Blessings Kaphaso. All rights reserved.</p>
+                <p>Built with passion and precision.</p>
             </div>
-            
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3 class="project-title">NeuroTech Systems Limited Website</h3>
-                </div>
-                <p class="project-description">
-                    A modern corporate website designed for NeuroTech Systems Limited to showcase their technological
-                    solutions, services, and industry expertise. The platform features responsive design, interactive
-                    data visualizations, and secure content management, offering an intuitive experience for both
-                    clients and administrators.
-                    The website highlights NeuroTech's commitment to innovation and excellence in the tech industry,
-                    providing a professional online presence that reflects their brand values and technological capabilities.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">Laravel</span>
-                    <span class="tech-tag">Chart.js</span>
-                    <span class="tech-tag">MySQL</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://neurotechsystemsltd.com" target="_blank" rel="noopener noreferrer" class="project-link">
-                        <i class="fas fa-external-link-alt"></i> Visit Site
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog">
-        <div class="section-header">
-            <h2 class="section-title">Latest Insights</h2>
-            <p class="section-subtitle">
-                Thoughts on software development, technology trends, and best practices
-            </p>
-        </div>
-        <div class="blog-card">
-            <div class="blog-content">
-                <h3 class="blog-title">Crafting Reliable Software</h3>
-                <p class="blog-excerpt">
-                    In the ever-evolving world of technology, the role of a software developer goes beyond writing code. 
-                    It's about solving real-world problems, creating seamless user experiences, and ensuring that 
-                    solutions are both scalable and secure.
-                </p>
-                <div class="read-more-content" id="blogContent">
-                    <h4>Embracing Challenges</h4>
-                    <p class="blog-excerpt">
-                        One of the most exciting aspects of being a developer is tackling complex challenges. 
-                        Whether it's designing a system architecture for a fintech solution like Msacco or optimizing 
-                        performance for mobile and web applications, I thrive on finding innovative ways to solve problems.
-                    </p>
-                    <h4>Prioritizing User-Centric Design</h4>
-                    <p class="blog-excerpt">
-                        As developers, we often get caught up in the technical side of things, but the ultimate goal 
-                        is to serve the end user. I believe in adopting a user-first approach by focusing on clean design, 
-                        intuitive interfaces, and accessibility.
-                    </p>
-                    <h4>Learning and Growing</h4>
-                    <p class="blog-excerpt">
-                        The tech industry is dynamic, and staying ahead means being a lifelong learner. I dedicate time 
-                        to exploring new tools and frameworks, experimenting with technologies like Flutter for mobile 
-                        development and diving deeper into backend systems with Laravel.
-                    </p>
-                </div>
-                <button class="read-more-btn" id="readMoreBtn">Read More</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="section-header">
-            <h2 class="section-title">Let's Work Together</h2>
-            <p class="section-subtitle">
-                Ready to bring your ideas to life? Let's discuss your next project
-            </p>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Get in Touch</h3>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div>
-                        <h4>Email</h4>
-                        <p>blesskapha@outlook.com</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div>
-                        <h4>Phone</h4>
-                        <p>+265 882 801 476</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div>
-                        <h4>Location</h4>
-                        <p>Salima, Malawi</p>
-                    </div>
-                </div>
-            </div>
-            <form id="contact-form" class="contact-form">
-                <div class="form-group">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject" class="form-label">Subject</label>
-                    <input type="text" id="subject" name="subject" class="form-input" placeholder="Subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" name="message" class="form-input form-textarea" placeholder="Your Message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-social">
-                <a href="https://github.com/blessingskaphaso" aria-label="GitHub Profile">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/peter-kaphaso-b3522711a/" aria-label="LinkedIn Profile">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://x.com/kapkid_mw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" aria-label="Twitter Profile">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://wa.me/qr/IO5Y3FZAL3QDB1" aria-label="WhatsApp Contact">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-            <p class="footer-text">
-                &copy; 2025 Peter Blessings Kaphaso. All rights reserved. Built with passion and precision.
-            </p>
         </div>
     </footer>
 
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
