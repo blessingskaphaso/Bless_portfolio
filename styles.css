@@ -1464,3 +1464,35 @@ textarea.form-input {
         scroll-behavior: auto !important;
     }
 }
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-image {
+    height: 2rem; /* Adjust size as needed */
+    width: auto;
+    max-width: 2rem;
+}
+
+/* Option 3: Background image approach */
+.logo-with-bg {
+    background-image: url('assets/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 2.5rem; /* Adjust based on logo width */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 1.75rem;
+        max-width: 1.75rem;
+    }
+    
+    .logo-text {
+        font-size: 1.25rem;
+    }
+}
