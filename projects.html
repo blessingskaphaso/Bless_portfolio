@@ -8,7 +8,847 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General styles */
+        :root {
+            --primary-blue: #3B82F6;
+            --secondary-gray: #6B7280;
+            --background-light: #F9FAFB;
+            --accent-green: #10B981;
+            --dark-gray-text: #111827;
+            --body-text-color: #374151;
+            --section-bg-dark: #1F2937;
+            --card-bg: #FFFFFF;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --modal-bg: rgba(0, 0, 0, 0.7);
+            --border-color: #E5E7EB;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--body-text-color);
+            background-color: var(--background-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+        }
+
+        a:hover {
+            color: var(--accent-green);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-gray-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--secondary-gray);
+        }
+
+        /* Header and Navigation */
+        .navbar {
+            background-color: var(--background-light);
+            padding: 1rem 0;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            color: var(--dark-gray-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-blue);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--dark-gray-text);
+            transition: all 0.3s ease;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projects-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .projects .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .filter-sort-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .filter-button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .filter-button {
+            padding: 0.6rem 1.2rem;
+            background-color: var(--background-light);
+            color: var(--dark-gray-text);
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-button:hover {
+            background-color: #E0E7FF;
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .filter-button.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .sort-dropdown-container {
+            position: relative;
+            z-index: 50; /* Ensure dropdown is above project cards */
+        }
+
+        .sort-dropdown {
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            background-color: var(--background-light);
+            color: var(--dark-gray-text);
+            font-weight: 500;
+            cursor: pointer;
+            appearance: none; /* Remove default arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%236B7280%22%20d%3D%22M287%20197.9c-3.2%203.2-7.1%204.9-11.7%204.9H17c-4.5%200-8.4-1.6-11.7-4.9-6.5-6.5-6.5-17.1%200-23.7l130.4-130.4c6.5-6.5%2017.1-6.5%2023.7%200l130.4%20130.4c6.5%206.6%206.5%2017.2%200%2023.7z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 0.7rem top 50%;
+            background-size: 0.65rem auto;
+            min-width: 180px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .project-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link, .details-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .project-link:hover, .details-link:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-badge {
+            display: inline-block;
+            background-color: #DBEAFE;
+            color: #1E40AF;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-gray-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--body-text-color);
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Allow description to take available space */
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background-color: #E0F2F7;
+            color: #00796B;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-top: auto; /* Push stats to the bottom */
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark-gray-text);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--secondary-gray);
+        }
+
+        .projects-cta {
+            text-align: center;
+            margin-top: 4rem;
+            background-color: var(--section-bg-dark);
+            color: white;
+            padding: 3rem 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .projects-cta p {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .projects-cta .btn {
+            background-color: var(--accent-green);
+            color: white;
+        }
+
+        .projects-cta .btn:hover {
+            background-color: #059669;
+        }
+
+        /* Pagination */
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .pagination-button {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--dark-gray-text);
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-button:hover:not(:disabled) {
+            background-color: #E0E7FF;
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .pagination-button.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .pagination-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Project Modal */
+        .project-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .project-modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .project-modal {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .project-modal-overlay.open .project-modal {
+            transform: scale(1);
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary-gray);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close-button:hover {
+            color: var(--dark-gray-text);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 0.375rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-badge {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--dark-gray-text);
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--body-text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-tech-tag {
+            font-size: 0.9rem;
+            padding: 0.4rem 0.8rem;
+            background-color: #E0F2F7;
+            color: #00796B;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+
+        .modal-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-stat-item {
+            background-color: var(--background-light);
+            border-radius: 0.375rem;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-stat-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .modal-stat-label {
+            font-size: 0.9rem;
+            color: var(--secondary-gray);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+
+        .modal-action-button {
+            padding: 0.8rem 1.8rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .modal-action-button.primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .modal-action-button.primary:hover {
+            background-color: #2563EB;
+        }
+
+        .modal-action-button.secondary {
+            background-color: var(--background-light);
+            color: var(--dark-gray-text);
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-action-button.secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--section-bg-dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-info {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .footer-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .footer-info p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #D1D5DB;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            color: #D1D5DB;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-links {
+            flex: 3;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-around;
+        }
+
+        .link-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 120px;
+        }
+
+        .link-group h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary-blue);
+        }
+
+        .link-group a {
+            color: #D1D5DB;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .link-group a:hover {
+            color: var(--accent-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #4B5563;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: #D1D5DB;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary-blue);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            border: none;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #2563EB;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                margin-left: 1rem;
+            }
+            .filter-sort-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--background-light);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 0;
+                text-align: center;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-toggle.active .hamburger-line:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .nav-toggle.active .hamburger-line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active .hamburger-line:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-button-group {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .filter-button {
+                width: 100%;
+            }
+
+            .sort-dropdown {
+                width: 100%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-info, .footer-links {
+                width: 100%;
+                min-width: unset;
+            }
+        }
+        .nav-logo-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(59,130,246,0.9), transparent 60%),
+                radial-gradient(circle at 70% 80%, rgba(34,197,94,0.85), transparent 60%),
+                #020617;
+            border: 1px solid rgba(148,163,184,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            box-shadow: 0 0 18px rgba(59,130,246,0.55);
+        }
+    </style>
 </head>
 <body>
     <header id="header">
@@ -17,7 +857,6 @@
                 <a href="index.html" class="nav-logo">
                     <span class="logo-text">PBK</span>
                 </a>
-                
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item">
                         <a href="index.html" class="nav-link">Home</a>
@@ -41,7 +880,6 @@
                         <a href="contact.html" class="nav-link">Contact</a>
                     </li>
                 </ul>
-                
                 <button class="nav-toggle" id="nav-toggle">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -53,130 +891,38 @@
 
     <main>
         <section id="projects" class="projects">
-            <!-- Animated Background -->
             <canvas id="projectsCanvas" class="projects-canvas"></canvas>
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Featured Projects</h2>
                     <p class="section-subtitle">Some of the projects I've worked on recently</p>
                 </div>
-                
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/msacco-project.jpg" alt="Msacco App Screenshot">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="https://msacco.online" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-badge">Sabali Solutions</div>
-                            <h3 class="project-title">Msacco Mobile App</h3>
-                            <p class="project-description">
-                                A comprehensive financial management mobile application for Msilikali SACCO members. 
-                                Features include secure transactions, loan management, account monitoring, and 
-                                real-time notifications.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Flutter</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">REST API</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <span class="stat-number">5K+</span>
-                                    <span class="stat-label">Active Users</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">4.8</span>
-                                    <span class="stat-label">App Rating</span>
-                                </div>
-                            </div>
-                        </div>
+
+                <div class="filter-sort-bar">
+                    <div class="filter-button-group" id="filterButtonGroup">
+                        <button class="filter-button active" data-category="all">All</button>
+                        <button class="filter-button" data-category="Web Development">Web Development</button>
+                        <button class="filter-button" data-category="Mobile Development">Mobile Development</button>
+                        <button class="filter-button" data-category="UI/UX">UI/UX</button>
                     </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/mdf-lms-project.jpg" alt="MDF LMS Screenshot">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="#" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-badge">Sabali Solutions</div>
-                            <h3 class="project-title">MDF Command & Staff College LMS</h3>
-                            <p class="project-description">
-                                Learning Management System for the Malawi Defence Force Command and Staff College. 
-                                Includes course management, assignment submission, progress tracking, and 
-                                resource sharing capabilities.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">MySQL</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <span class="stat-number">50+</span>
-                                    <span class="stat-label">Students</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">2+</span>
-                                    <span class="stat-label">Courses</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/neurotech-project.png" alt="NeuroTech Website Screenshot">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="https://neurotechsystemsltd.com" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-badge">NeuroTech Systems</div>
-                            <h3 class="project-title">NeuroTech Systems Website</h3>
-                            <p class="project-description">
-                                Modern corporate website developed during my time at NeuroTech Systems, showcasing 
-                                the company's technological solutions and services. Features responsive design, 
-                                interactive elements, and content management capabilities.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Next.js</span>
-                                <span class="tech-tag">Tailwind CSS</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">Chart.js</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <span class="stat-number">95</span>
-                                    <span class="stat-label">Performance Score</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">100%</span>
-                                    <span class="stat-label">Mobile Friendly</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="sort-dropdown-container">
+                        <select class="sort-dropdown" id="sortDropdown">
+                            <option value="date-desc">Date Added (Newest)</option>
+                            <option value="date-asc">Date Added (Oldest)</option>
+                            <option value="title-asc">Title (A-Z)</option>
+                            <option value="title-desc">Title (Z-A)</option>
+                        </select>
                     </div>
                 </div>
-                
+
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Project cards will be injected here by JavaScript -->
+                </div>
+
+                <div class="pagination-controls" id="paginationControls">
+                    <!-- Pagination buttons will be injected here by JavaScript -->
+                </div>
+
                 <div class="projects-cta">
                     <p>Interested in seeing more of my work?</p>
                     <a href="contact.html" class="btn btn-primary">Let's Build Something Together</a>
@@ -206,7 +952,6 @@
                         </a>
                     </div>
                 </div>
-                
                 <div class="footer-links">
                     <div class="link-group">
                         <h4>Navigation</h4>
@@ -228,7 +973,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2025 Peter Blessings Kaphaso. All rights reserved.</p>
             </div>
@@ -239,17 +983,370 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <!-- Project Quick View Modal -->
+    <div class="project-modal-overlay" id="projectModalOverlay">
+        <div class="project-modal" id="projectModal">
+            <button class="modal-close-button" id="modalCloseButton"><i class="fas fa-times"></i></button>
+            <img src="https://placehold.co/900x300" alt="Project Image" class="modal-image" id="modalImage">
+            <div class="project-badge modal-badge" id="modalBadge"></div>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <p class="modal-description" id="modalDescription"></p>
+            <div class="modal-tech-stack" id="modalTechStack"></div>
+            <div class="modal-stats-grid" id="modalStatsGrid"></div>
+            <div class="modal-actions">
+                <a href="#" target="_blank" class="modal-action-button primary" id="modalExternalLink">View Live Project <i class="fas fa-external-link-alt"></i></a>
+                <button class="modal-action-button secondary" id="modalCloseButtonBottom">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        const projectsData = [
+            {
+                id: "msacco",
+                category: "Mobile Development",
+                dateAdded: "2023-03-15",
+                title: "Msacco Mobile App",
+                company: "Sabali Solutions",
+                description: "A comprehensive financial management mobile application for Msilikali SACCO members. Features include secure transactions, loan management, account monitoring, and real-time notifications.",
+                techStack: ["Flutter", "Laravel", "MySQL", "REST API"],
+                stats: [
+                    { number: "5K+", label: "Active Users" },
+                    { number: "4.8", label: "App Rating" }
+                ],
+                imageUrl: "assets/msacco-project.jpg",
+                externalLink: "https://msacco.online",
+                details: "The Msacco Mobile App provides SACCO members with unparalleled convenience and control over their finances. It integrates seamlessly with existing SACCO systems to offer real-time updates, secure transaction processing, and personalized financial insights. Users can apply for loans, monitor their savings, pay bills, and receive important notifications directly on their mobile devices, enhancing financial inclusion and accessibility. The app emphasizes security with multi-factor authentication and data encryption."
+            },
+            {
+                id: "mdf-lms",
+                category: "Web Development",
+                dateAdded: "2022-11-20",
+                title: "MDF Command & Staff College LMS",
+                company: "Sabali Solutions",
+                description: "Learning Management System for the Malawi Defence Force Command and Staff College. Includes course management, assignment submission, progress tracking, and resource sharing capabilities.",
+                techStack: ["React", "Node.js", "Laravel", "MySQL"],
+                stats: [
+                    { number: "50+", label: "Students" },
+                    { number: "2+", label: "Courses" }
+                ],
+                imageUrl: "assets/mdf-lms-project.jpg",
+                externalLink: "#", // No public link
+                details: "This bespoke Learning Management System was developed to support the advanced educational needs of the Malawi Defence Force Command and Staff College. It offers a robust platform for delivering course materials, facilitating online assignments, tracking student progress, and fostering collaborative learning environments. The system is designed for high security and performance, ensuring confidential academic content is protected while providing a seamless learning experience for military personnel."
+            },
+            {
+                id: "neurotech-website",
+                category: "Web Development",
+                dateAdded: "2023-07-01",
+                title: "NeuroTech Systems Website",
+                company: "NeuroTech Systems",
+                description: "Modern corporate website developed during my time at NeuroTech Systems, showcasing the company's technological solutions and services. Features responsive design, interactive elements, and content management capabilities.",
+                techStack: ["Next.js", "Tailwind CSS", "Laravel", "Chart.js"],
+                stats: [
+                    { number: "95", label: "Performance Score" },
+                    { number: "100%", label: "Mobile Friendly" }
+                ],
+                imageUrl: "assets/neurotech-project.png",
+                externalLink: "https://neurotechsystemsltd.com",
+                details: "The NeuroTech Systems corporate website serves as the primary digital storefront for the company, highlighting its innovative technology solutions and services. Built with a focus on modern web standards, it boasts a sleek, responsive design that performs excellently across all devices. Interactive elements and dynamic content ensure an engaging user experience, while an integrated content management system allows for easy updates and scalability. The site reflects NeuroTech's commitment to cutting-edge technology."
+            },
+            {
+                id: "zomhocs",
+                category: "Web Development",
+                dateAdded: "2024-01-10",
+                title: "ZOMHOCS Mental Health Support Platform",
+                company: "Health & Community Platform",
+                description: "A modern web-based mental health support platform designed to provide secure access to counseling services, appointment scheduling, testimonials, and user authentication.",
+                techStack: ["React.js", "Tailwind CSS", "JavaScript", "REST API", "Authentication"],
+                stats: [
+                    { number: "24/7", label: "Support Access" },
+                    { number: "100%", label: "Responsive UI" }
+                ],
+                imageUrl: "assets/zomhocs-project.png",
+                externalLink: "#", // No public link
+                details: "ZOMHOCS is a dedicated mental health support platform aimed at connecting individuals with professional counseling services. The platform prioritizes user privacy and data security, offering a confidential space for booking appointments, attending virtual sessions, and accessing mental health resources. Its intuitive UI/UX ensures ease of navigation and a comforting experience, while robust authentication mechanisms safeguard user data. The responsive design guarantees accessibility on any device, making support readily available."
+            },
+            {
+                id: "literature-blog",
+                category: "UI/UX",
+                dateAdded: "2023-09-01",
+                title: "Literature & Spiritual Reflections Blog",
+                company: "Client Website",
+                description: "A personal literature and spiritual reflections blog designed and developed for Rev. Fr. Geraldo Bleza Malota. The platform publishes articles and poems with a strong emphasis on clean design, readability, accessibility, and mobile-first responsiveness.",
+                techStack: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "SEO"],
+                stats: [
+                    { number: "Client", label: "Commissioned Project" },
+                    { number: "100%", label: "Mobile Friendly" }
+                ],
+                imageUrl: "assets/literature-blog-project.png",
+                externalLink: "#", // No public link
+                details: "This blog was meticulously crafted for Rev. Fr. Geraldo Bleza Malota to share his literary and spiritual writings. The design focuses on a clean, uncluttered interface that enhances readability and encourages reflection. Special attention was given to accessibility standards and mobile-first development, ensuring a pleasant experience for all users, regardless of their device or abilities. The platform is optimized for search engines to reach a wider audience interested in spiritual and literary content."
+            }
+        ];
+
+        // Navbar toggle for mobile
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+                navToggle.classList.toggle('active');
+            });
+
+            // Close nav menu when a link is clicked (for single-page navigation)
+            navMenu.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+
+
+        // Project Filtering, Sorting, and Pagination
+        const projectsGrid = document.getElementById('projectsGrid');
+        const filterButtonGroup = document.getElementById('filterButtonGroup');
+        const sortDropdown = document.getElementById('sortDropdown');
+        const paginationControls = document.getElementById('paginationControls');
+
+        let currentFilter = 'all';
+        let currentSort = 'date-desc';
+        let currentPage = 1;
+        const projectsPerPage = 6; // Set to 6 as it will display all 5 projects on one page for this dataset.
+
+        function renderProjects() {
+            let filteredProjects = [...projectsData];
+
+            // Apply filter
+            if (currentFilter !== 'all') {
+                filteredProjects = filteredProjects.filter(project => project.category === currentFilter);
+            }
+
+            // Apply sort
+            filteredProjects.sort((a, b) => {
+                if (currentSort === 'date-asc') {
+                    return new Date(a.dateAdded) - new Date(b.dateAdded);
+                } else if (currentSort === 'date-desc') {
+                    return new Date(b.dateAdded) - new Date(a.dateAdded);
+                } else if (currentSort === 'title-asc') {
+                    return a.title.localeCompare(b.title);
+                } else if (currentSort === 'title-desc') {
+                    return b.title.localeCompare(a.title);
+                }
+                return 0;
+            });
+
+            // Apply pagination
+            const startIndex = (currentPage - 1) * projectsPerPage;
+            const endIndex = startIndex + projectsPerPage;
+            const paginatedProjects = filteredProjects.slice(startIndex, endIndex);
+
+            projectsGrid.innerHTML = ''; // Clear existing projects
+
+            if (paginatedProjects.length === 0) {
+                projectsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; font-size: 1.2rem; color: var(--secondary-gray);">No projects found for this category.</p>`;
+            } else {
+                paginatedProjects.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.classList.add('project-card');
+                    projectCard.innerHTML = `
+                        <div class="project-image-wrapper">
+                            <img src="${project.imageUrl}" alt="${project.title} Screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    ${project.externalLink && project.externalLink !== '#' ? `<a href="${project.externalLink}" target="_blank" class="project-link" aria-label="View live project"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                                    <button class="details-link" aria-label="View project details" data-project-id="${project.id}"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-badge">${project.company}</div>
+                            <h3 class="project-title">${project.title}</h3>
+                            <p class="project-description">${project.description}</p>
+                            <div class="project-tech">
+                                ${project.techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                            </div>
+                            <div class="project-stats">
+                                ${project.stats.map(stat => `
+                                    <div class="stat">
+                                        <span class="stat-number">${stat.number}</span>
+                                        <span class="stat-label">${stat.label}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    projectsGrid.appendChild(projectCard);
+                });
+            }
+
+            renderPaginationControls(filteredProjects.length);
+        }
+
+        function renderPaginationControls(totalProjects) {
+            paginationControls.innerHTML = '';
+            const totalPages = Math.ceil(totalProjects / projectsPerPage);
+
+            if (totalPages <= 1) return;
+
+            // Previous button
+            const prevButton = document.createElement('button');
+            prevButton.classList.add('pagination-button');
+            prevButton.textContent = 'Prev';
+            prevButton.disabled = currentPage === 1;
+            prevButton.addEventListener('click', () => {
+                currentPage--;
+                renderProjects();
+                window.scrollTo({ top: projectsGrid.offsetTop - 100, behavior: 'smooth' });
+            });
+            paginationControls.appendChild(prevButton);
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.classList.add('pagination-button');
+                pageButton.textContent = i;
+                if (i === currentPage) {
+                    pageButton.classList.add('active');
+                }
+                pageButton.addEventListener('click', () => {
+                    currentPage = i;
+                    renderProjects();
+                    window.scrollTo({ top: projectsGrid.offsetTop - 100, behavior: 'smooth' });
+                });
+                paginationControls.appendChild(pageButton);
+            }
+
+            // Next button
+            const nextButton = document.createElement('button');
+            nextButton.classList.add('pagination-button');
+            nextButton.textContent = 'Next';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.addEventListener('click', () => {
+                currentPage++;
+                renderProjects();
+                window.scrollTo({ top: projectsGrid.offsetTop - 100, behavior: 'smooth' });
+            });
+            paginationControls.appendChild(nextButton);
+        }
+
+        filterButtonGroup.addEventListener('click', (event) => {
+            if (event.target.classList.contains('filter-button')) {
+                // Remove active from previous button
+                filterButtonGroup.querySelector('.filter-button.active')?.classList.remove('active');
+                // Add active to new button
+                event.target.classList.add('active');
+                currentFilter = event.target.dataset.category;
+                currentPage = 1; // Reset to first page on filter change
+                renderProjects();
+            }
+        });
+
+        sortDropdown.addEventListener('change', (event) => {
+            currentSort = event.target.value;
+            currentPage = 1; // Reset to first page on sort change
+            renderProjects();
+        });
+
+        // Initial render
+        renderProjects();
+
+        // Project Modal Logic
+        const projectModalOverlay = document.getElementById('projectModalOverlay');
+        const projectModal = document.getElementById('projectModal');
+        const modalCloseButton = document.getElementById('modalCloseButton');
+        const modalCloseButtonBottom = document.getElementById('modalCloseButtonBottom');
+        const modalImage = document.getElementById('modalImage');
+        const modalBadge = document.getElementById('modalBadge');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalTechStack = document.getElementById('modalTechStack');
+        const modalStatsGrid = document.getElementById('modalStatsGrid');
+        const modalExternalLink = document.getElementById('modalExternalLink');
+
+        function openProjectModal(projectId) {
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project) return;
+
+            modalImage.src = project.imageUrl;
+            modalImage.alt = `${project.title} Screenshot`;
+            modalBadge.textContent = project.company;
+            modalTitle.textContent = project.title;
+            modalDescription.textContent = project.details;
+
+            modalTechStack.innerHTML = project.techStack.map(tech => `<span class="modal-tech-tag">${tech}</span>`).join('');
+
+            modalStatsGrid.innerHTML = project.stats.map(stat => `
+                <div class="modal-stat-item">
+                    <span class="modal-stat-number">${stat.number}</span>
+                    <span class="modal-stat-label">${stat.label}</span>
+                </div>
+            `).join('');
+
+            if (project.externalLink && project.externalLink !== '#') {
+                modalExternalLink.href = project.externalLink;
+                modalExternalLink.style.display = 'inline-flex';
+            } else {
+                modalExternalLink.style.display = 'none';
+            }
+
+            projectModalOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        }
+
+        function closeProjectModal() {
+            projectModalOverlay.classList.remove('open');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        projectsGrid.addEventListener('click', (event) => {
+            const detailsButton = event.target.closest('.details-link');
+            if (detailsButton) {
+                const projectId = detailsButton.dataset.projectId;
+                openProjectModal(projectId);
+            }
+        });
+
+        modalCloseButton.addEventListener('click', closeProjectModal);
+        modalCloseButtonBottom.addEventListener('click', closeProjectModal);
+        projectModalOverlay.addEventListener('click', (event) => {
+            if (event.target === projectModalOverlay) {
+                closeProjectModal();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && projectModalOverlay.classList.contains('open')) {
+                closeProjectModal();
+            }
+        });
+
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
         // Matrix-Style Code Rain for Projects Page
         (function() {
             const canvas = document.getElementById('projectsCanvas');
             if (!canvas) return;
-            
             const ctx = canvas.getContext('2d');
             let columns = [];
             let animationId;
-
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?/~`';
             const fontSize = 14;
             let columnCount;
@@ -258,8 +1355,7 @@
                 canvas.width = canvas.offsetWidth;
                 canvas.height = canvas.offsetHeight;
                 columnCount = Math.floor(canvas.width / fontSize);
-                
-                // Initialize columns
+
                 columns = [];
                 for (let i = 0; i < columnCount; i++) {
                     columns[i] = {
@@ -271,33 +1367,26 @@
             }
 
             function drawMatrix() {
-                // Semi-transparent background for trail effect
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-
                 ctx.font = `${fontSize}px 'Courier New', monospace`;
 
                 columns.forEach((column, i) => {
                     const char = characters[Math.floor(Math.random() * characters.length)];
                     const x = i * fontSize;
-                    
-                    // Gradient effect - brighter at the leading edge
+
                     const gradient = ctx.createLinearGradient(x, column.y - fontSize * 10, x, column.y);
                     gradient.addColorStop(0, 'rgba(59, 130, 246, 0)');
                     gradient.addColorStop(0.5, `rgba(59, 130, 246, ${column.opacity * 0.5})`);
                     gradient.addColorStop(1, `rgba(59, 130, 246, ${column.opacity})`);
-                    
                     ctx.fillStyle = gradient;
                     ctx.fillText(char, x, column.y);
 
-                    // Leading character (brightest)
                     ctx.fillStyle = `rgba(147, 197, 253, ${column.opacity})`;
                     ctx.fillText(char, x, column.y);
 
-                    // Move column down
                     column.y += column.speed;
 
-                    // Reset column when it goes off screen
                     if (column.y > canvas.height && Math.random() > 0.975) {
                         column.y = 0;
                         column.speed = Math.random() * 2 + 1;

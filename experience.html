@@ -6,75 +6,721 @@
     <title>Experience - Peter Blessings Kaphaso</title>
     <meta name="description" content="Professional experience and career journey of Peter Blessings Kaphaso in software development.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        :root {
+            --bg-main: #020617;          /* dark slate */
+            --bg-elevated: rgba(15, 23, 42, 0.85);
+            --accent: #22c55e;           /* green */
+            --accent-soft: rgba(34, 197, 94, 0.18);
+            --primary: #3b82f6;          /* blue */
+            --primary-soft: rgba(59, 130, 246, 0.16);
+            --border-subtle: rgba(148, 163, 184, 0.35);
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --danger: #f97373;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(59,130,246,0.18), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(34,197,94,0.18), transparent 55%),
+                #020617;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: linear-gradient(
+                to bottom,
+                rgba(15, 23, 42, 0.92),
+                rgba(15, 23, 42, 0.7),
+                transparent
+            );
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+        }
+
+        .navbar-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0.9rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--text-main);
+        }
+
+        .nav-logo-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(59,130,246,0.9), transparent 60%),
+                radial-gradient(circle at 70% 80%, rgba(34,197,94,0.85), transparent 60%),
+                #020617;
+            border: 1px solid rgba(148,163,184,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            box-shadow: 0 0 18px rgba(59,130,246,0.55);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--text-muted);
+            font-weight: 500;
+            padding-bottom: 0.15rem;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            transition: width 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.4);
+            background: rgba(15,23,42,0.9);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 3px;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 17px;
+            height: 2px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: translateY(5px) rotate(45deg);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: translateY(-5px) rotate(-45deg);
+        }
+
+        /* MAIN SECTION */
+        main {
+            padding-top: 5.5rem;
+        }
+
+        .experience {
+            padding: 4.5rem 0 4rem;
+            position: relative;
+        }
+
+        .experience::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(59,130,246,0.12), transparent 55%),
+                radial-gradient(circle at 90% 80%, rgba(34,197,94,0.12), transparent 55%);
+            opacity: 0.75;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(59,130,246,0.4);
+            background: radial-gradient(circle at top left, rgba(59,130,246,0.2), transparent 60%);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-kicker-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: radial-gradient(circle at center, var(--accent), transparent 70%);
+            box-shadow: 0 0 8px rgba(34,197,94,0.9);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-highlight {
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .section-subtitle {
+            max-width: 520px;
+            margin: 0 auto;
+            font-size: 0.98rem;
+            color: var(--text-muted);
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 0 0;
+            z-index: 1;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0.4rem;
+            bottom: 0.4rem;
+            width: 2px;
+            transform: translateX(-50%);
+            background: linear-gradient(
+                to bottom,
+                rgba(148,163,184,0) 0%,
+                rgba(59,130,246,0.9) 40%,
+                rgba(34,197,94,0.9) 60%,
+                rgba(148,163,184,0) 100%
+            );
+            opacity: 0.85;
+            box-shadow: 0 0 18px rgba(59,130,246,0.4);
+        }
+
+        .timeline-item {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            margin: 1.7rem 0;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+        }
+
+        .timeline-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 1.35rem;
+            width: 14px;
+            height: 14px;
+            transform: translateX(-50%);
+            border-radius: 999px;
+            background: radial-gradient(circle at center, var(--accent), #16a34a);
+            border: 2px solid #020617;
+            box-shadow:
+                0 0 0 4px rgba(22,163,74,0.3),
+                0 0 18px rgba(34,197,94,0.7);
+        }
+
+        .timeline-card {
+            position: relative;
+            width: 100%;
+            max-width: 390px;
+            padding: 1.25rem 1.35rem;
+            border-radius: 0.9rem;
+            background:
+                radial-gradient(circle at top left, rgba(59,130,246,0.25), transparent 60%),
+                radial-gradient(circle at bottom right, rgba(15,23,42,0.95), rgba(15,23,42,0.9));
+            border: 1px solid rgba(148,163,184,0.4);
+            box-shadow:
+                0 18px 35px rgba(15,23,42,0.8),
+                0 0 35px rgba(59,130,246,0.18);
+            backdrop-filter: blur(18px);
+            color: var(--text-main);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-card {
+            margin-right: 2.5rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-card {
+            margin-left: 2.5rem;
+        }
+
+        .job-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .job-title span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 0.12rem 0.5rem;
+            border-radius: 999px;
+            border: 1px solid rgba(59,130,246,0.45);
+            margin-left: 0.4rem;
+            color: var(--text-muted);
+        }
+
+        .job-period {
+            font-size: 0.78rem;
+            padding: 0.13rem 0.55rem;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.95);
+            border: 1px solid rgba(148,163,184,0.4);
+            color: var(--text-muted);
+        }
+
+        .job-company {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 0.7rem;
+        }
+
+        .job-description {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-bottom: 0.9rem;
+        }
+
+        .job-achievements {
+            list-style: none;
+            margin-bottom: 0.9rem;
+        }
+
+        .job-achievements li {
+            display: flex;
+            gap: 0.4rem;
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .job-achievements li i {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-top: 0.08rem;
+        }
+
+        .job-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.3rem;
+        }
+
+        .tech-tag {
+            font-size: 0.72rem;
+            padding: 0.22rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.7);
+            color: var(--text-muted);
+            background: radial-gradient(circle at top left, rgba(148,163,184,0.2), transparent 55%);
+        }
+
+        .timeline-pill {
+            position: absolute;
+            top: -0.6rem;
+            left: 1.1rem;
+            font-size: 0.7rem;
+            padding: 0.12rem 0.55rem;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.96);
+            border: 1px solid rgba(59,130,246,0.5);
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        .footer {
+            border-top: 1px solid rgba(148,163,184,0.25);
+            background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617);
+            padding: 2.8rem 0 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-main {
+            flex: 1.4;
+            min-width: 260px;
+        }
+
+        .footer-main h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-main p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            max-width: 360px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1.1rem;
+        }
+
+        .social-link {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            border: 1px solid rgba(148,163,184,0.5);
+            background: rgba(15,23,42,0.9);
+            transition: all 0.25s ease;
+        }
+
+        .social-link:hover {
+            color: #e5e7eb;
+            border-color: var(--accent);
+            box-shadow: 0 0 14px rgba(34,197,94,0.7);
+            transform: translateY(-1px);
+        }
+
+        .footer-links {
+            flex: 1.2;
+            min-width: 260px;
+            display: flex;
+            gap: 2.2rem;
+            flex-wrap: wrap;
+            font-size: 0.86rem;
+        }
+
+        .link-group h4 {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-bottom: 0.7rem;
+        }
+
+        .link-group a {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--text-main);
+            opacity: 0.7;
+            transition: opacity 0.2s ease, color 0.2s ease;
+        }
+
+        .link-group a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            margin-top: 2.2rem;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(148,163,184,0.25);
+            padding-top: 1.2rem;
+        }
+
+        /* BACK TO TOP */
+        .back-to-top {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.6);
+            background: radial-gradient(circle at top left, rgba(59,130,246,0.35), rgba(15,23,42,0.96));
+            color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 14px 35px rgba(15,23,42,0.9);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+            z-index: 40;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            border-color: var(--accent);
+            box-shadow:
+                0 18px 40px rgba(15,23,42,1),
+                0 0 20px rgba(34,197,94,0.7);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .timeline-line {
+                left: 23px;
+                transform: none;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+            }
+
+            .timeline-marker {
+                left: 23px;
+                transform: none;
+            }
+
+            .timeline-card {
+                max-width: 100%;
+                margin: 0 0 0 3.6rem !important;
+            }
+
+            .experience {
+                padding-top: 3.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: absolute;
+                inset: 56px 1.25rem auto 1.25rem;
+                border-radius: 0.9rem;
+                background: rgba(15,23,42,0.98);
+                border: 1px solid rgba(148,163,184,0.35);
+                box-shadow: 0 22px 50px rgba(15,23,42,0.9);
+                padding: 0.7rem 0.8rem;
+                flex-direction: column;
+                gap: 0.4rem;
+                font-size: 0.9rem;
+                display: none;
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 0.35rem 0.3rem;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-inner {
+                flex-direction: column;
+            }
+            .footer-main p {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header id="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="index.html" class="nav-logo">
-                    <span class="logo-text">PBK</span>
-                </a>
-                
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-mark">PBK</div>
+            </a>
+            <nav>
                 <ul class="nav-menu" id="nav-menu">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="services.html" class="nav-link">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="experience.html" class="nav-link active">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="skills.html" class="nav-link">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="projects.html" class="nav-link">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">Contact</a>
-                    </li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="experience.html" class="nav-link active">Experience</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
-                
-                <button class="nav-toggle" id="nav-toggle">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
     <main>
-        <section id="experience" class="experience">
+        <section class="experience" id="experience">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Professional Experience</h2>
-                    <p class="section-subtitle">My journey through various roles and responsibilities</p>
-                </div>
-                
+                <header class="section-header">
+                    <div class="section-kicker">
+                        <span class="section-kicker-dot"></span>
+                        <span>Career timeline</span>
+                    </div>
+                    <h2 class="section-title">
+                        Professional <span class="section-highlight">Experience</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        A track record of building impactful products, leading teams, and shipping reliable systems across
+                        education, enterprise, and startup environments.
+                    </p>
+                </header>
+
                 <div class="timeline">
-                    <div class="timeline-item">
+                    <div class="timeline-line"></div>
+
+                    <!-- MDF Command and Staff College -->
+                    <article class="timeline-item">
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="job-title">Developer</h3>
-                            <p class="company">MDF Command and Staff College</p>
-                            <span class="job-period">2025 - Present</span>
+                        <div class="timeline-card">
+                            <span class="timeline-pill">Current role</span>
+                            <div class="job-header">
+                                <h3 class="job-title">
+                                    Developer
+                                    <span>Full‑stack</span>
+                                </h3>
+                                <span class="job-period">2025 – Present</span>
+                            </div>
+                            <p class="job-company">MDF Command and Staff College</p>
                             <p class="job-description">
-                                Currently developing and maintaining the Command and Staff College Learning Management 
-                                System. Creating user-friendly interfaces for military training and administration while 
-                                ensuring security and reliability.
+                                Developing and maintaining the Command and Staff College Learning Management System (LMS)
+                                used for military training and administration. Focused on secure,
+                                resilient interfaces that work reliably in constrained environments.
                             </p>
                             <ul class="job-achievements">
-                                <li>Delivered comprehensive LMS platform on time and within budget</li>
-                                <li>Implemented role-based access control for secure data management</li>
-                                <li>Trained staff on system usage and provided ongoing technical support</li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Delivered a comprehensive LMS platform on time and within budget, aligned with
+                                    operational requirements.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Implemented robust role‑based access control to protect sensitive training and
+                                    personnel data.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Trained staff on day‑to‑day system use and provided ongoing technical support to drive adoption.
+                                </li>
                             </ul>
                             <div class="job-tech">
                                 <span class="tech-tag">React</span>
@@ -83,24 +729,42 @@
                                 <span class="tech-tag">MySQL</span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="timeline-item">
+                    </article>
+
+                    <!-- NeuroTech Systems Limited -->
+                    <article class="timeline-item">
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="job-title">Service Delivery Engineer</h3>
-                            <p class="company">NeuroTech Systems Limited</p>
-                            <span class="job-period">2023 - 2024</span>
+                        <div class="timeline-card">
+                            <span class="timeline-pill">Enterprise</span>
+                            <div class="job-header">
+                                <h3 class="job-title">
+                                    Service Delivery Engineer
+                                    <span>Web & Infra</span>
+                                </h3>
+                                <span class="job-period">2023 – 2024</span>
+                            </div>
+                            <p class="job-company">NeuroTech Systems Limited</p>
                             <p class="job-description">
-                                Led development of enterprise web applications and the company's corporate website. 
-                                Architected and implemented scalable systems while managing multiple projects and 
-                                collaborating with cross-functional teams.
+                                Led the development of enterprise web applications and the company’s corporate website.
+                                Balanced hands‑on engineering with planning, architecture, and cross‑functional collaboration.
                             </p>
                             <ul class="job-achievements">
-                                <li>Increased organizational performance by 40% through system optimization</li>
-                                <li>Developed the company's modern, responsive website from scratch</li>
-                                <li>Led a team of 4 developers on multiple client projects</li>
-                                <li>Implemented best practices for code quality and deployment</li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Increased organizational performance by approximately 40% through system optimization and workflow automation.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Planned, designed, and shipped a fully responsive corporate website from scratch.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Led a team of four developers across multiple client projects with tight timelines.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Introduced and enforced best practices around code quality, reviews, and deployment.
+                                </li>
                             </ul>
                             <div class="job-tech">
                                 <span class="tech-tag">Next.js</span>
@@ -109,35 +773,57 @@
                                 <span class="tech-tag">Tailwind CSS</span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="timeline-item">
+                    </article>
+
+                    <!-- Sabali Solutions -->
+                    <article class="timeline-item">
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="job-title">Founder & Lead Developer</h3>
-                            <p class="company">Sabali Solutions</p>
-                            <span class="job-period">2020 - Present</span>
+                        <div class="timeline-card">
+                            <span class="timeline-pill">Founder</span>
+                            <div class="job-header">
+                                <h3 class="job-title">
+                                    Founder &amp; Lead Developer
+                                    <span>Product & Delivery</span>
+                                </h3>
+                                <span class="job-period">2020 – Present</span>
+                            </div>
+                            <p class="job-company">Sabali Solutions</p>
                             <p class="job-description">
-                                Founded and currently leading Sabali Solutions, a software development company focused 
-                                on creating innovative digital solutions for businesses and organizations. Managing 
-                                client relationships, project delivery, and technical development.
+                                Founded and lead Sabali Solutions, a software company focused on building practical,
+                                business‑ready digital products. Own end‑to‑end delivery from discovery and architecture
+                                through development and launch.
                             </p>
                             <ul class="job-achievements">
-                                <li>Successfully delivered 10+ projects for various clients</li>
-                                <li>Built the Msacco mobile app serving 5,000+ active users</li>
-                                <li>Developed enterprise LMS for educational institutions</li>
-                                <li>Established strong reputation in Malawi's tech industry</li>
-                                <li>Reduced clients' manual processes by up to 80% through automation</li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Successfully delivered 10+ bespoke projects for clients across different industries.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Built the Msacco mobile app, now serving more than 5,000 active users.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Designed and implemented enterprise‑grade LMS platforms for educational institutions.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Established a strong reputation within Malawi’s tech ecosystem for reliable delivery.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    Reduced clients’ manual processes by up to 80% through workflow automation and system integration.
+                                </li>
                             </ul>
                             <div class="job-tech">
                                 <span class="tech-tag">Flutter</span>
                                 <span class="tech-tag">Laravel</span>
                                 <span class="tech-tag">React</span>
                                 <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">REST API</span>
+                                <span class="tech-tag">REST APIs</span>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -145,10 +831,13 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
+            <div class="footer-inner">
+                <div class="footer-main">
                     <h3>Peter Blessings Kaphaso</h3>
-                    <p>Full-Stack Developer & Founder of Sabali Solutions, passionate about creating digital solutions that make a difference.</p>
+                    <p>
+                        Full‑Stack Developer &amp; Founder of Sabali Solutions, focused on building
+                        dependable digital products that unlock real value for businesses and institutions.
+                    </p>
                     <div class="footer-social">
                         <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
                             <i class="fab fa-github"></i>
@@ -164,7 +853,7 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="footer-links">
                     <div class="link-group">
                         <h4>Navigation</h4>
@@ -186,9 +875,8 @@
                     </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2025 Peter Blessings Kaphaso. All rights reserved.</p>
+                &copy; 2025 Peter Blessings Kaphaso. All rights reserved.
             </div>
         </div>
     </footer>
@@ -197,6 +885,52 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile nav
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('open');
+            });
+
+            navMenu.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 280) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () =>
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        );
+
+        // Timeline fade-in
+        const items = document.querySelectorAll('.timeline-item');
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.18 }
+        );
+        items.forEach(item => observer.observe(item));
+    </script>
 </body>
 </html>

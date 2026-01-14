@@ -6,18 +6,413 @@
     <title>Contact - Peter Blessings Kaphaso</title>
     <meta name="description" content="Get in touch with Peter Blessings Kaphaso for web development, mobile apps, and technical consulting services.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Fonts and Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #0a0a0c;
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --bg-glass-heavy: rgba(10, 10, 12, 0.7);
+            --cyan: #0ff6ff;
+            --purple: #8c00ff;
+            --text-main: #f0f0f0;
+            --text-muted: #94a3b8;
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --neon-glow: 0 0 15px rgba(15, 246, 255, 0.3);
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Prevents blank screen with subtle background glow */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(140, 0, 255, 0.07) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(15, 246, 255, 0.07) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Reveal Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .animate-reveal {
+            animation: fadeInUp 1s forwards;
+        }
+
+        /* Navbar Modernization */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .logo-text {
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--cyan);
+            text-shadow: 0 0 8px rgba(15, 246, 255, 0.5);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-main);
+            margin: 5px 0;
+        }
+
+        /* Main Contact Section */
+        .contact {
+            padding: 140px 0 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Glassmorphic Layout Grid */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+        }
+
+        /* Info Column */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--cyan);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .contact-method:hover {
+            border-color: var(--cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(15, 246, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan);
+            font-size: 1.25rem;
+            box-shadow: var(--neon-shadow);
+        }
+
+        .method-info h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .method-info p {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Form Styling */
+        .contact-form {
+            background: var(--bg-glass-heavy);
+            border: 1px solid var(--border-glass);
+            padding: 3rem;
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 0.9rem 1.2rem;
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            border-color: var(--cyan);
+            background: rgba(15, 246, 255, 0.05);
+            box-shadow: 0 0 0 4px rgba(15, 246, 255, 0.1), var(--neon-shadow);
+        }
+
+        select.form-input option {
+            background: var(--bg-deep);
+            color: #fff;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: #000;
+            border: none;
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(15, 246, 255, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .form-note {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .availability-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #10b981;
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .nav-toggle { display: block; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-form { padding: 2rem; }
+        }
+
+        /* Footer Preservation Styling */
+        .footer {
+            margin-top: 4rem;
+            padding: 4rem 0 2rem;
+            background: rgba(10, 10, 12, 0.9);
+            border-top: 1px solid var(--border-glass);
+        }
+
+        .footer h3, .footer h4 { color: #fff; margin-bottom: 1.5rem; }
+        .footer p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .footer-content { display: grid; grid-template-columns: 1.5fr 2fr; gap: 4rem; margin-bottom: 3rem; }
+        .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .link-group a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 0.75rem; transition: 0.3s; }
+        .link-group a:hover { color: var(--cyan); }
+        .footer-social { display: flex; gap: 1rem; }
+        .social-link { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border-glass); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: 0.3s; }
+        .social-link:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(15, 246, 255, 0.05); }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-glass); color: var(--text-muted); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-links { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-glass-heavy);
+            border: 1px solid var(--border-glass);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: 0.3s;
+        }
+
+        .back-to-top:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            transform: translateY(-5px);
+        }
+        .nav-logo-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(59,130,246,0.9), transparent 60%),
+                radial-gradient(circle at 70% 80%, rgba(34,197,94,0.85), transparent 60%),
+                #020617;
+            border: 1px solid rgba(148,163,184,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            box-shadow: 0 0 18px rgba(59,130,246,0.55);
+        }
+    </style>
 </head>
 <body>
+
     <header id="header">
         <nav class="navbar">
             <div class="nav-container">
                 <a href="index.html" class="nav-logo">
                     <span class="logo-text">PBK</span>
                 </a>
-                
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item">
                         <a href="index.html" class="nav-link">Home</a>
@@ -41,7 +436,6 @@
                         <a href="contact.html" class="nav-link active">Contact</a>
                     </li>
                 </ul>
-                
                 <button class="nav-toggle" id="nav-toggle">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -51,92 +445,81 @@
         </nav>
     </header>
 
-    <main>
+    <main class="animate-reveal">
         <section id="contact" class="contact">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Get In Touch</h2>
+                    <h2 class="section-title">Get In <span style="color: var(--cyan)">Touch</span></h2>
                     <p class="section-subtitle">Ready to start your next project? Let's discuss how I can help</p>
                 </div>
-                
+
                 <div class="contact-content">
                     <div class="contact-info">
-                        <h3>Let's Connect</h3>
-                        <p>
-                            I'm always interested in hearing about new projects and opportunities. 
-                            Whether you're looking for a developer, have a question, or just want to connect, 
-                            feel free to reach out.
-                        </p>
-                        
+                        <div>
+                            <h3>Let's Connect</h3>
+                            <p style="color: var(--text-muted); font-size: 1.05rem;">
+                                I'm always interested in hearing about new projects and opportunities. 
+                                Whether you're looking for a developer, have a question, or just want to connect, 
+                                feel free to reach out.
+                            </p>
+                        </div>
+
                         <div class="contact-methods">
                             <div class="contact-method">
-                                <div class="method-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
+                                <div class="method-icon"><i class="fas fa-envelope"></i></div>
                                 <div class="method-info">
                                     <h4>Email</h4>
                                     <p>blesskapha@outlook.com</p>
                                 </div>
                             </div>
-                            
                             <div class="contact-method">
-                                <div class="method-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
+                                <div class="method-icon"><i class="fas fa-phone"></i></div>
                                 <div class="method-info">
                                     <h4>Phone</h4>
                                     <p>+265 882 801 476</p>
                                 </div>
                             </div>
-                            
                             <div class="contact-method">
-                                <div class="method-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
+                                <div class="method-icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <div class="method-info">
                                     <h4>Location</h4>
                                     <p>Salima, Malawi</p>
                                 </div>
                             </div>
-                            
                             <div class="contact-method">
-                                <div class="method-icon">
-                                    <i class="fab fa-whatsapp"></i>
-                                </div>
+                                <div class="method-icon"><i class="fab fa-whatsapp"></i></div>
                                 <div class="method-info">
                                     <h4>WhatsApp</h4>
                                     <p>Available for quick chats</p>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="availability">
-                            <h4>Availability</h4>
-                            <p>Currently available for new projects</p>
+
+                        <div class="availability glass-panel" style="padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px solid var(--border-glass);">
+                            <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--purple); margin-bottom: 0.5rem;">Availability</h4>
+                            <p style="font-weight: 600;">Currently available for new projects</p>
                             <div class="availability-status">
                                 <span class="status-dot"></span>
                                 <span>Usually responds within 24 hours</span>
                             </div>
                         </div>
                     </div>
-                    
+
                     <form class="contact-form" id="contact-form">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" id="firstName" name="firstName" class="form-input" required>
+                                <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Peter" required>
                             </div>
                             <div class="form-group">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" id="lastName" name="lastName" class="form-input" required>
+                                <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Blessings" required>
                             </div>
                         </div>
-                        
                         <div class="form-group">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="example@outlook.com" required>
                         </div>
-                        
                         <div class="form-group">
                             <label for="subject" class="form-label">Subject</label>
                             <select id="subject" name="subject" class="form-input" required>
@@ -148,7 +531,6 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        
                         <div class="form-group">
                             <label for="budget" class="form-label">Project Budget (Optional)</label>
                             <select id="budget" name="budget" class="form-input">
@@ -160,17 +542,14 @@
                                 <option value="discuss">Let's discuss</option>
                             </select>
                         </div>
-                        
                         <div class="form-group">
                             <label for="message" class="form-label">Message</label>
                             <textarea id="message" name="message" class="form-input" rows="6" placeholder="Tell me about your project..." required></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">
+                        <button type="submit" class="btn-primary">
                             <i class="fas fa-paper-plane"></i>
                             Send Message
                         </button>
-                        
                         <p class="form-note">
                             Your information is secure and will only be used to respond to your inquiry.
                         </p>
@@ -180,6 +559,7 @@
         </section>
     </main>
 
+    <!-- ORIGINAL FOOTER UNCHANGED -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -201,7 +581,6 @@
                         </a>
                     </div>
                 </div>
-                
                 <div class="footer-links">
                     <div class="link-group">
                         <h4>Navigation</h4>
@@ -223,17 +602,34 @@
                     </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2025 Peter Blessings Kaphaso. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script>
+        // Simple Navbar Toggle for Mobile
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            if(navMenu.style.display === 'flex') {
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.width = '100%';
+                navMenu.style.background = 'rgba(10, 10, 12, 0.95)';
+                navMenu.style.padding = '2rem';
+                navMenu.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+            }
+        });
+    </script>
 </body>
 </html>
