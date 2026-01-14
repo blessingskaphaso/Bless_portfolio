@@ -8,55 +8,160 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS Variables - Dual Theme Support */
+        :root {
+            /* Default: Dark Mode */
+            --primary-blue: #3B82F6;
+            --accent-green: #10B981;
+            --background-body: #0F172A;
+            --background-nav: rgba(15, 23, 42, 0.8);
+            --background-card: rgba(30, 41, 59, 0.7);
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-color: rgba(148, 163, 184, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --canvas-opacity: 0.5;
+        }
+
+        /* Light Mode Override */
+        [data-theme="light"] {
+            --background-body: #F1F5F9;
+            --background-nav: rgba(255, 255, 255, 0.8);
+            --background-card: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --canvas-opacity: 0.3;
+        }
+
+        /* Auto-detection for users who haven't toggled manually */
+        @media (prefers-color-scheme: light) {
+            :root:not([data-theme="dark"]) {
+                --background-body: #F1F5F9;
+                --background-nav: rgba(255, 255, 255, 0.8);
+                --background-card: #FFFFFF;
+                --text-main: #1E293B;
+                --text-muted: #64748B;
+                --border-color: rgba(0, 0, 0, 0.05);
+                --shadow-color: rgba(0, 0, 0, 0.1);
+                --canvas-opacity: 0.3;
+            }
+        }
+
+        /* Global Reset & Base Styles */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-body);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Navbar & Theme Toggle */
+        .navbar {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background-color: var(--background-nav);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+        .nav-logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-blue); text-decoration: none; }
+        .nav-menu { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-link { color: var(--text-main); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+        .nav-link.active { color: var(--primary-blue); }
+
+        .theme-toggle {
+            background: none; border: none; color: var(--text-main);
+            cursor: pointer; font-size: 1.2rem; margin-left: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding-top: 80px; overflow: hidden; }
+        .hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: var(--canvas-opacity); }
+        .hero-content { display: flex; align-items: center; gap: 4rem; width: 100%; }
+        .hero-text { flex: 1; }
+        .greeting { display: block; font-size: 1.25rem; color: var(--accent-green); font-weight: 600; margin-bottom: 0.5rem; }
+        .name { display: block; font-size: 3.5rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1.1; }
+        .role { display: block; font-size: 1.5rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero-description { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 600px; }
+
+        /* Buttons */
+        .hero-buttons { display: flex; gap: 1rem; margin-bottom: 2.5rem; }
+        .btn { 
+            padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 600; 
+            text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary { background: var(--primary-blue); color: #fff; }
+        .btn-secondary { background: var(--background-card); color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px var(--shadow-color); }
+
+        /* Hero Image */
+        .hero-image { flex: 1; display: flex; flex-direction: column; align-items: center; }
+        .image-container { position: relative; width: 320px; height: 320px; margin-bottom: 2rem; }
+        .profile-image { 
+            width: 100%; height: 100%; border-radius: 20px; object-fit: cover; 
+            position: relative; z-index: 2; border: 4px solid var(--background-card);
+        }
+        .image-backdrop {
+            position: absolute; top: 20px; left: 20px; width: 100%; height: 100%;
+            background: var(--primary-blue); border-radius: 20px; z-index: 1; opacity: 0.2;
+        }
+
+        /* Stats Bar */
+        .hero-stats { display: flex; gap: 2rem; background: var(--background-card); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px var(--shadow-color); }
+        .stat-item { text-align: center; }
+        .stat-number { display: block; font-size: 1.5rem; font-weight: 800; color: var(--primary-blue); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Footer */
+        .footer { padding: 4rem 0 2rem; background: var(--background-nav); border-top: 1px solid var(--border-color); }
+        .footer-content { display: grid; grid-template-columns: 2fr 3fr; gap: 4rem; margin-bottom: 3rem; }
+        .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .link-group h4 { margin-bottom: 1.5rem; color: var(--primary-blue); }
+        .link-group a { display: block; margin-bottom: 0.75rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 968px) {
+            .hero-content { flex-direction: column; text-align: center; gap: 3rem; }
+            .hero-description { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-links { grid-template-columns: 1fr; }
+            .nav-menu { display: none; } /* Simplified for this example */
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Navigation -->
     <header id="header">
         <nav class="navbar">
-            <div class="nav-container">
-                <a href="index.html" class="nav-logo">
-                    <span class="logo-text">PBK</span>
-                </a>
-                
-                <ul class="nav-menu" id="nav-menu">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link active">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="services.html" class="nav-link">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="experience.html" class="nav-link">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="skills.html" class="nav-link">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="projects.html" class="nav-link">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">Contact</a>
+            <div class="nav-container container">
+                <a href="index.html" class="nav-logo">PBK</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li>
+                        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
                     </li>
                 </ul>
-                
-                <button class="nav-toggle" id="nav-toggle">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
             </div>
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section id="home" class="hero">
-            <!-- Animated Background -->
             <canvas id="heroCanvas" class="hero-canvas"></canvas>
             <div class="container">
                 <div class="hero-content">
@@ -67,50 +172,22 @@
                             <span class="role">Full-Stack Developer & Founder</span>
                         </h1>
                         <p class="hero-description">
-                            Founder of Sabali Solutions, specializing in Technical Consultation, and building scalable web and mobile applications
-                            using modern technologies. With expertise in JavaScript, Flutter, and Laravel, I create
-                            digital solutions that drive business growth and enhance user experiences.
+                            Founder of Sabali Solutions, specializing in Technical Consultation, and building scalable web and mobile applications using modern technologies.
                         </p>
                         <div class="hero-buttons">
-                            <a href="contact.html" class="btn btn-primary">
-                                <i class="fas fa-envelope"></i>
-                                Get In Touch
-                            </a>
-                            <a href="assets/bless.pdf" download class="btn btn-secondary">
-                                <i class="fas fa-download"></i>
-                                Download CV
-                            </a>
-                        </div>
-                        <div class="hero-social">
-                            <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/peter-kaphaso-b3522711a/" target="_blank" rel="noopener" class="social-link">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" target="_blank" rel="noopener" class="social-link">
-                                <i class="fab fa-twitter"></i>
-                            </a>
+                            <a href="contact.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
+                            <a href="assets/bless.pdf" download class="btn btn-secondary"><i class="fas fa-download"></i> Download CV</a>
                         </div>
                     </div>
                     <div class="hero-image">
                         <div class="image-container">
-                            <img src="assets/profile_picture.jpg" alt="Peter Blessings Kaphaso - Full-Stack Developer" class="profile-image">
+                            <img src="assets/profile_picture.jpg" alt="Profile" class="profile-image">
                             <div class="image-backdrop"></div>
                         </div>
                         <div class="hero-stats">
-                            <div class="stat-item">
-                                <span class="stat-number">3+</span>
-                                <span class="stat-label">Years Experience</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">5+</span>
-                                <span class="stat-label">Projects Completed</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">5+</span>
-                                <span class="stat-label">Happy Clients</span>
-                            </div>
+                            <div class="stat-item"><span class="stat-number">3+</span><span class="stat-label">Years Exp</span></div>
+                            <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Projects</span></div>
+                            <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Clients</span></div>
                         </div>
                     </div>
                 </div>
@@ -118,153 +195,110 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>Peter Blessings Kaphaso</h3>
-                    <p>Full-Stack Developer & Founder of Sabali Solutions, passionate about creating digital solutions that make a difference.</p>
-                    <div class="footer-social">
-                        <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/peter-kaphaso-b3522711a/" target="_blank" rel="noopener" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" target="_blank" rel="noopener" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://wa.me/qr/IO5Y3FZAL3QDB1" target="_blank" rel="noopener" class="social-link">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
+                    <p>Founder of Sabali Solutions, creating digital solutions that make a difference.</p>
                 </div>
-                
                 <div class="footer-links">
                     <div class="link-group">
                         <h4>Navigation</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About</a>
-                        <a href="services.html">Services</a>
-                        <a href="experience.html">Experience</a>
                     </div>
                     <div class="link-group">
-                        <h4>More</h4>
-                        <a href="skills.html">Skills</a>
-                        <a href="projects.html">Projects</a>
-                        <a href="contact.html">Contact</a>
+                        <h4>Legal</h4>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms</a>
                     </div>
                     <div class="link-group">
-                        <h4>Resources</h4>
-                        <a href="assets/Peter_Blessings_CV.pdf" download>Download CV</a>
+                        <h4>Contact</h4>
                         <a href="mailto:blesskapha@outlook.com">Email Me</a>
                     </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2025 Peter Blessings Kaphaso. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <script src="script.js"></script>
     <script>
-        // Subtle Geometric Animation for Home Page
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        // Check for saved preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            icon.className = currentTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.className = 'fas fa-moon';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                icon.className = 'fas fa-sun';
+            }
+        });
+
+        // Background Animation (Updated for dynamic colors)
         (function() {
             const canvas = document.getElementById('heroCanvas');
-            if (!canvas) return;
-            
             const ctx = canvas.getContext('2d');
             let particles = [];
-            let animationId;
-
-            function resizeCanvas() {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
+            
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             }
+            window.addEventListener('resize', resize);
+            resize();
 
             class Particle {
                 constructor() {
+                    this.init();
+                }
+                init() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
                     this.vx = (Math.random() - 0.5) * 0.5;
                     this.vy = (Math.random() - 0.5) * 0.5;
-                    this.radius = Math.random() * 2 + 1;
                 }
-
                 update() {
                     this.x += this.vx;
                     this.y += this.vy;
-
                     if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                     if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
                 }
-
                 draw() {
                     ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(59, 130, 246, 0.5)';
+                    ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
+                    // Dynamically get the primary blue color from CSS
+                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary-blue');
                     ctx.fill();
                 }
             }
 
-            function init() {
-                resizeCanvas();
-                particles = [];
-                for (let i = 0; i < 80; i++) {
-                    particles.push(new Particle());
-                }
-            }
-
-            function drawLines() {
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < 150) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = `rgba(59, 130, 246, ${0.2 * (1 - distance / 150)})`;
-                            ctx.lineWidth = 1;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
+            for(let i=0; i<60; i++) particles.push(new Particle());
 
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                particles.forEach(particle => {
-                    particle.update();
-                    particle.draw();
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
                 });
-                
-                drawLines();
-                animationId = requestAnimationFrame(animate);
+                requestAnimationFrame(animate);
             }
-
-            window.addEventListener('resize', () => {
-                resizeCanvas();
-                init();
-            });
-
-            init();
             animate();
-
-            // Cleanup on page unload
-            window.addEventListener('beforeunload', () => {
-                if (animationId) cancelAnimationFrame(animationId);
-            });
         })();
     </script>
 </body>
