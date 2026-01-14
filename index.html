@@ -7,325 +7,11 @@
     <meta name="description" content="Professional portfolio of Peter Blessings Kaphaso, founder of Sabali Solutions and skilled full-stack developer specializing in JavaScript, Flutter, and Laravel development.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Modern Enhancement Styles */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.15), transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.15), transparent 50%);
-            z-index: 2;
-        }
-
-        .hero-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 1;
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(40px, 40px); }
-        }
-
-        .hero .container {
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text .greeting {
-            display: inline-block;
-            padding: 0.5rem 1.25rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 2rem;
-            color: #60a5fa;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .hero-text .name {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .hero-text .role {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-description {
-            color: #94a3b8;
-            font-size: 1.125rem;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-buttons .btn-primary {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-            border: none;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
-        }
-
-        .hero-buttons .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.6);
-        }
-
-        .hero-buttons .btn-secondary {
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-buttons .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .hero-social {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .hero-social .social-link {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            color: #94a3b8;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            backdrop-filter: blur(10px);
-            font-size: 1.25rem;
-        }
-
-        .hero-social .social-link:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: #3b82f6;
-            color: #3b82f6;
-            transform: translateY(-2px);
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .image-container {
-            position: relative;
-            border-radius: 2rem;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            padding: 2rem;
-        }
-
-        .image-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-
-        .image-container:hover::before {
-            opacity: 1;
-        }
-
-        .profile-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 1.5rem;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .image-backdrop {
-            display: none;
-        }
-
-        .hero-stats {
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .hero-stats .stat-item {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 1.5rem 1rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .hero-stats .stat-item:hover {
-            background: rgba(59, 130, 246, 0.1);
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-4px);
-        }
-
-        .hero-stats .stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-            line-height: 1;
-        }
-
-        .hero-stats .stat-label {
-            color: #94a3b8;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            display: block;
-        }
-
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-text .name {
-                font-size: 2.5rem;
-            }
-
-            .hero-text .role {
-                font-size: 1.5rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn-primary,
-            .hero-buttons .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .hero-stats .stat-number {
-                font-size: 2rem;
-            }
-        }
-    </style>
 </head>
 <body>
+    <!-- Header Navigation -->
     <header id="header">
         <nav class="navbar">
             <div class="nav-container">
@@ -366,12 +52,12 @@
         </nav>
     </header>
 
+    <!-- Main Content -->
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
+            <!-- Animated Background -->
             <canvas id="heroCanvas" class="hero-canvas"></canvas>
-            <div class="hero-grid"></div>
-            
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-text">
@@ -432,6 +118,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -488,7 +175,7 @@
 
     <script src="script.js"></script>
     <script>
-        // Enhanced Interactive Particle Animation
+        // Subtle Geometric Animation for Home Page
         (function() {
             const canvas = document.getElementById('heroCanvas');
             if (!canvas) return;
@@ -496,7 +183,6 @@
             const ctx = canvas.getContext('2d');
             let particles = [];
             let animationId;
-            let mouse = { x: null, y: null, radius: 150 };
 
             function resizeCanvas() {
                 canvas.width = canvas.offsetWidth;
@@ -510,26 +196,11 @@
                     this.vx = (Math.random() - 0.5) * 0.5;
                     this.vy = (Math.random() - 0.5) * 0.5;
                     this.radius = Math.random() * 2 + 1;
-                    this.color = Math.random() > 0.5 ? 'rgba(59, 130, 246, 0.6)' : 'rgba(139, 92, 246, 0.6)';
                 }
 
                 update() {
                     this.x += this.vx;
                     this.y += this.vy;
-
-                    // Mouse interaction
-                    if (mouse.x !== null && mouse.y !== null) {
-                        const dx = mouse.x - this.x;
-                        const dy = mouse.y - this.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        
-                        if (distance < mouse.radius) {
-                            const force = (mouse.radius - distance) / mouse.radius;
-                            const angle = Math.atan2(dy, dx);
-                            this.x -= Math.cos(angle) * force * 2;
-                            this.y -= Math.sin(angle) * force * 2;
-                        }
-                    }
 
                     if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                     if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
@@ -538,21 +209,15 @@
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = this.color;
+                    ctx.fillStyle = 'rgba(59, 130, 246, 0.5)';
                     ctx.fill();
-                    
-                    // Glow effect
-                    ctx.shadowBlur = 15;
-                    ctx.shadowColor = this.color;
                 }
             }
 
             function init() {
                 resizeCanvas();
                 particles = [];
-                const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 100);
-                
-                for (let i = 0; i < particleCount; i++) {
+                for (let i = 0; i < 80; i++) {
                     particles.push(new Particle());
                 }
             }
@@ -566,14 +231,7 @@
 
                         if (distance < 150) {
                             ctx.beginPath();
-                            const gradient = ctx.createLinearGradient(
-                                particles[i].x, particles[i].y,
-                                particles[j].x, particles[j].y
-                            );
-                            const opacity = 0.2 * (1 - distance / 150);
-                            gradient.addColorStop(0, `rgba(59, 130, 246, ${opacity})`);
-                            gradient.addColorStop(1, `rgba(139, 92, 246, ${opacity})`);
-                            ctx.strokeStyle = gradient;
+                            ctx.strokeStyle = `rgba(59, 130, 246, ${0.2 * (1 - distance / 150)})`;
                             ctx.lineWidth = 1;
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
@@ -592,22 +250,8 @@
                 });
                 
                 drawLines();
-                ctx.shadowBlur = 0;
-                
                 animationId = requestAnimationFrame(animate);
             }
-
-            // Mouse move event
-            canvas.addEventListener('mousemove', (e) => {
-                const rect = canvas.getBoundingClientRect();
-                mouse.x = e.clientX - rect.left;
-                mouse.y = e.clientY - rect.top;
-            });
-
-            canvas.addEventListener('mouseleave', () => {
-                mouse.x = null;
-                mouse.y = null;
-            });
 
             window.addEventListener('resize', () => {
                 resizeCanvas();
@@ -617,6 +261,7 @@
             init();
             animate();
 
+            // Cleanup on page unload
             window.addEventListener('beforeunload', () => {
                 if (animationId) cancelAnimationFrame(animationId);
             });
