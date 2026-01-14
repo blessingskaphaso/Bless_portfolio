@@ -346,7 +346,8 @@
                         </p>
                         <div class="hero-buttons">
                             <a href="contact.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
-                            <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> Download CV</a>
+                            <a href="assets/bless.pdf" class="btn btn-secondary" download="Peter_Blessings_Kaphaso_CV.pdf"> <i class="fas fa-download"></i> Download CV </a>
+
                         </div>
                     </div>
                     <div class="hero-image">
@@ -372,10 +373,19 @@
                     <h3>Peter Blessings Kaphaso</h3>
                     <p>Full-Stack Developer & Founder of Sabali Solutions, passionate about creating digital solutions that make a difference.</p>
                     <div class="footer-social">
-                        <a href="#" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/peter-kaphaso-b3522711a/" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/265882801476?text=Hello%20Peter,%20can%20we%20%20talk%20about%20your%20services?" 
+                        target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -395,7 +405,7 @@
                 </div>
                 <div class="link-group">
                     <h4>Resources</h4>
-                    <a href="#" download>Download CV</a>
+                    <a href="assets/bless.pdf" download="Peter_Blessings_Kaphaso_CV.pdf"> Download CV</a>
                     <a href="mailto:blesskapha@outlook.com">Email Me</a>
                 </div>
             </div>
@@ -440,49 +450,7 @@
             }
         });
 
-        // --- ORIGINAL ANIMATION (Unchanged Logic) ---
-        (function() {
-            const canvas = document.getElementById('heroCanvas');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-
-            function resize() { 
-                canvas.width = window.innerWidth; 
-                canvas.height = window.innerHeight; 
-            }
-            window.addEventListener('resize', resize);
-            resize();
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.vx = (Math.random() - 0.5) * 0.5;
-                    this.vy = (Math.random() - 0.5) * 0.5;
-                }
-                update() {
-                    this.x += this.vx; this.y += this.vy;
-                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                    // Use CSS variable for particle color
-                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--canvas-particle');
-                    ctx.fill();
-                }
-            }
-
-            for(let i = 0; i < 80; i++) particles.push(new Particle());
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => { p.update(); p.draw(); });
-                requestAnimationFrame(animate);
-            }
-            animate();
-        })();
+        
     </script>
 </body>
 </html>

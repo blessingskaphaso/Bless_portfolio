@@ -947,7 +947,8 @@
                         <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" target="_blank" rel="noopener" class="social-link">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="https://wa.me/qr/IO5Y3FZAL3QDB1" target="_blank" rel="noopener" class="social-link">
+                        <a href="https://wa.me/265882801476?text=Hello%20Peter,%20can%20we%20%20talk%20about%20your%20services?" 
+                        target="_blank" rel="noopener" class="social-link">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -968,7 +969,7 @@
                     </div>
                     <div class="link-group">
                         <h4>Resources</h4>
-                        <a href="assets/Peter_Blessings_CV.pdf" download>Download CV</a>
+                        <a href="assets/bless.pdf" download="Peter_Blessings_Kaphaso_CV.pdf"> Download CV</a>
                         <a href="mailto:blesskapha@outlook.com">Email Me</a>
                     </div>
                 </div>
@@ -1339,77 +1340,6 @@
                 behavior: 'smooth'
             });
         });
-
-        // Matrix-Style Code Rain for Projects Page
-        (function() {
-            const canvas = document.getElementById('projectsCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let columns = [];
-            let animationId;
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?/~`';
-            const fontSize = 14;
-            let columnCount;
-
-            function resizeCanvas() {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
-                columnCount = Math.floor(canvas.width / fontSize);
-
-                columns = [];
-                for (let i = 0; i < columnCount; i++) {
-                    columns[i] = {
-                        y: Math.random() * canvas.height,
-                        speed: Math.random() * 2 + 1,
-                        opacity: Math.random() * 0.5 + 0.3
-                    };
-                }
-            }
-
-            function drawMatrix() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.font = `${fontSize}px 'Courier New', monospace`;
-
-                columns.forEach((column, i) => {
-                    const char = characters[Math.floor(Math.random() * characters.length)];
-                    const x = i * fontSize;
-
-                    const gradient = ctx.createLinearGradient(x, column.y - fontSize * 10, x, column.y);
-                    gradient.addColorStop(0, 'rgba(59, 130, 246, 0)');
-                    gradient.addColorStop(0.5, `rgba(59, 130, 246, ${column.opacity * 0.5})`);
-                    gradient.addColorStop(1, `rgba(59, 130, 246, ${column.opacity})`);
-                    ctx.fillStyle = gradient;
-                    ctx.fillText(char, x, column.y);
-
-                    ctx.fillStyle = `rgba(147, 197, 253, ${column.opacity})`;
-                    ctx.fillText(char, x, column.y);
-
-                    column.y += column.speed;
-
-                    if (column.y > canvas.height && Math.random() > 0.975) {
-                        column.y = 0;
-                        column.speed = Math.random() * 2 + 1;
-                    }
-                });
-            }
-
-            function animate() {
-                drawMatrix();
-                animationId = requestAnimationFrame(animate);
-            }
-
-            window.addEventListener('resize', () => {
-                resizeCanvas();
-            });
-
-            resizeCanvas();
-            animate();
-
-            window.addEventListener('beforeunload', () => {
-                if (animationId) cancelAnimationFrame(animationId);
-            });
-        })();
     </script>
 </body>
 </html>
