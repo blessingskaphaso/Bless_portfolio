@@ -8,18 +8,12 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Preserving your styles.css link -->
-    <link rel="stylesheet" href="styles.css">
     
     <style>
-        /* 
-           THEME SYSTEM:
-           We define your original dark colors as variables.
-           When [data-theme="light"] is active, these variables swap values.
-        */
+        /* --- THEME SYSTEM --- */
         :root {
-            --bg-color: #0F172A; /* Your original dark navy */
-            --nav-bg: rgba(15, 23, 42, 0.8);
+            --bg-color: #0F172A;
+            --nav-bg: rgba(15, 23, 42, 0.95);
             --text-primary: #F8FAFC;
             --text-secondary: #94A3B8;
             --card-bg: rgba(30, 41, 59, 0.7);
@@ -27,45 +21,135 @@
             --primary-blue: #3B82F6;
             --accent-green: #10B981;
             --canvas-particle: rgba(59, 130, 246, 0.5);
+            --transition: all 0.3s ease;
         }
 
         [data-theme="light"] {
-            --bg-color: #F8FAFC; /* Light gray/white */
-            --nav-bg: rgba(255, 255, 255, 0.85);
-            --text-primary: #1E293B; /* Dark slate text */
+            --bg-color: #F8FAFC;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --text-primary: #1E293B;
             --text-secondary: #475569;
             --card-bg: #FFFFFF;
             --border-color: rgba(0, 0, 0, 0.1);
             --canvas-particle: rgba(59, 130, 246, 0.3);
         }
 
-        /* Applying Variables to your existing layout */
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-primary);
             transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- NAVIGATION --- */
         .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
             background-color: var(--nav-bg);
             border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
-        .nav-link { color: var(--text-primary) !important; }
-        .nav-link.active { color: var(--primary-blue) !important; }
-        .hero-description { color: var(--text-secondary); }
-        .footer { border-top: 1px solid var(--border-color); background: var(--nav-bg); }
-        
-        .hero-stats {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 12px;
+        .nav-container {
+            height: 70px;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
             gap: 20px;
         }
 
-        /* Theme Toggle Button Style */
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-blue);
+        }
+
+        /* Hamburger Button */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* Mobile Menu Logic */
+        @media (max-width: 992px) {
+            .nav-toggle { display: flex; }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--nav-bg);
+                width: 100%;
+                height: calc(100vh - 70px);
+                text-align: center;
+                transition: 0.4s ease;
+                padding-top: 40px;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+        }
+
+        /* Theme Toggle */
         .theme-toggle-btn {
             background: none;
             border: 1px solid var(--border-color);
@@ -73,28 +157,155 @@
             cursor: pointer;
             padding: 8px 12px;
             border-radius: 6px;
-            margin-left: 15px;
             font-size: 1rem;
-            transition: 0.3s;
+            transition: var(--transition);
         }
-        
+
         .theme-toggle-btn:hover {
             background: var(--primary-blue);
             color: white;
         }
 
-        /* Ensure images and canvas adapt */
-        .hero-canvas { opacity: 0.7; }
-        .image-backdrop { background: var(--primary-blue); opacity: 0.2; }
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .hero-text { flex: 1; }
+        .hero-title { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; }
+        .hero-title .greeting { display: block; font-size: 1.2rem; color: var(--primary-blue); }
+        .hero-title .name { display: block; font-weight: 800; }
+        .hero-title .role { display: block; font-size: 1.5rem; color: var(--text-secondary); }
+
+        .hero-description { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 30px; max-width: 500px; }
+
+        .hero-buttons { display: flex; gap: 15px; }
+        .btn { padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary { background: var(--primary-blue); color: white; }
+        .btn-secondary { border: 1px solid var(--border-color); color: var(--text-primary); }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        .hero-image { flex: 1; position: relative; display: flex; flex-direction: column; align-items: center; }
+        .image-container { position: relative; z-index: 1; }
+        .profile-image { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-blue); }
+        .image-backdrop { position: absolute; top: 10px; right: -10px; width: 100%; height: 100%; background: var(--primary-blue); border-radius: 50%; z-index: -1; opacity: 0.2; }
+
+        .hero-stats {
+            margin-top: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            gap: 30px;
+            backdrop-filter: blur(5px);
+        }
+        .stat-number { font-weight: 700; font-size: 1.2rem; color: var(--primary-blue); }
+        .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
+
+        @media (max-width: 992px) {
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-description { margin: 0 auto 30px; }
+            .hero-buttons { justify-content: center; }
+            .hero-title { font-size: 2.5rem; }
+            .profile-image { width: 250px; height: 250px; }
+        }
+
+        /* --- DETAILED FOOTER --- */
+        .footer {
+            background-color: var(--nav-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-info h3 { color: var(--primary-blue); margin-bottom: 15px; }
+        .footer-info p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px; }
+
+        .footer-social { display: flex; gap: 15px; }
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .social-link:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+
+        .link-group h4 { margin-bottom: 20px; font-size: 1.1rem; }
+        .link-group a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .link-group a:hover { color: var(--primary-blue); padding-left: 5px; }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-info p { margin: 0 auto 20px; }
+            .footer-social { justify-content: center; }
+        }
+        
     </style>
 </head>
-<body>
+<body data-theme="dark">
+
     <header id="header">
         <nav class="navbar">
             <div class="nav-container">
                 <a href="index.html" class="nav-logo">
                     <span class="logo-text">PBK</span>
                 </a>
+
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
@@ -103,14 +314,14 @@
                     <li class="nav-item"><a href="skills.html" class="nav-link">Skills</a></li>
                     <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                    <!-- Toggle Button Added Here -->
-                    <li>
+                    <li class="nav-item">
                         <button id="themeToggle" class="theme-toggle-btn" title="Toggle Light/Dark Mode">
                             <i id="themeIcon" class="fas fa-moon"></i>
                         </button>
                     </li>
                 </ul>
-                <button class="nav-toggle" id="nav-toggle">
+
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -131,15 +342,13 @@
                             <span class="role">Full-Stack Developer & Founder</span>
                         </h1>
                         <p class="hero-description">
-                            Founder of Sabali Solutions, specializing in Technical Consultation, and building scalable web and mobile applications
-                            using modern technologies.
+                            Founder of Sabali Solutions, specializing in Technical Consultation, and building scalable web and mobile applications using modern technologies.
                         </p>
                         <div class="hero-buttons">
                             <a href="contact.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
-                            <a href="assets/bless.pdf" download class="btn btn-secondary"><i class="fas fa-download"></i> Download CV</a>
+                            <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> Download CV</a>
                         </div>
                     </div>
-
                     <div class="hero-image">
                         <div class="image-container">
                             <img src="assets/profile_picture.jpg" alt="Peter Blessings Kaphaso" class="profile-image">
@@ -158,6 +367,38 @@
 
     <footer class="footer">
         <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Peter Blessings Kaphaso</h3>
+                    <p>Full-Stack Developer & Founder of Sabali Solutions, passionate about creating digital solutions that make a difference.</p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Navigation</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="experience.html">Experience</a>
+                    </div>
+                </div>
+                <div class="link-group">
+                    <h4>More</h4>
+                    <a href="skills.html">Skills</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="link-group">
+                    <h4>Resources</h4>
+                    <a href="#" download>Download CV</a>
+                    <a href="mailto:blesskapha@outlook.com">Email Me</a>
+                </div>
+            </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Peter Blessings Kaphaso. All rights reserved.</p>
             </div>
@@ -165,27 +406,50 @@
     </footer>
 
     <script>
+        // --- MOBILE NAV TOGGLE ---
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // Accessibility & visual feedback
+            const lines = document.querySelectorAll('.hamburger-line');
+            if(navMenu.classList.contains('active')) {
+                lines[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+                lines[1].style.opacity = '0';
+                lines[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+            } else {
+                lines[0].style.transform = 'none';
+                lines[1].style.opacity = '1';
+                lines[2].style.transform = 'none';
+            }
+        });
+
         // --- THEME TOGGLE SCRIPT ---
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         
         themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'light') {
-                document.documentElement.removeAttribute('data-theme');
+            const body = document.body;
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
                 themeIcon.className = 'fas fa-moon';
             } else {
-                document.documentElement.setAttribute('data-theme', 'light');
+                body.setAttribute('data-theme', 'light');
                 themeIcon.className = 'fas fa-sun';
             }
         });
 
-        // --- YOUR ORIGINAL ANIMATION (Unchanged) ---
+        // --- ORIGINAL ANIMATION (Unchanged Logic) ---
         (function() {
             const canvas = document.getElementById('heroCanvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
-            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+
+            function resize() { 
+                canvas.width = window.innerWidth; 
+                canvas.height = window.innerHeight; 
+            }
             window.addEventListener('resize', resize);
             resize();
 
@@ -209,7 +473,9 @@
                     ctx.fill();
                 }
             }
+
             for(let i = 0; i < 80; i++) particles.push(new Particle());
+
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 particles.forEach(p => { p.update(); p.draw(); });
