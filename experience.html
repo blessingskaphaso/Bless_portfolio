@@ -877,7 +877,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2025 Peter Blessings Kaphaso. All rights reserved.
+               &copy; <span id="year"></span> 2025 Peter Blessings Kaphaso. All rights reserved.
             </div>
         </div>
     </footer>
@@ -932,6 +932,10 @@
             { threshold: 0.18 }
         );
         items.forEach(item => observer.observe(item));
+        // Set current year in footer
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("year").textContent = new Date().getFullYear();
+        });
     </script>
 </body>
 </html>

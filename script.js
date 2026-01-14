@@ -777,3 +777,9 @@ Source: Peter Blessings Kaphaso Portfolio
     window.Portfolio = app;
 
 })();
+document.addEventListener("DOMContentLoaded", function () {
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+});
