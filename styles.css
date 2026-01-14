@@ -1695,3 +1695,124 @@ textarea.form-input {
         font-size: 1.25rem;
     }
 }
+/* ============================================
+   ANIMATED BACKGROUND CANVAS STYLES
+   Add this to your existing styles.css file
+   ============================================ */
+
+/* Canvas positioning and styling */
+.hero-canvas,
+.skills-canvas,
+.projects-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Ensure section has position relative */
+.hero,
+.skills,
+.projects {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ensure content appears above canvas */
+.hero .container,
+.skills .container,
+.projects .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Optional: Add a subtle overlay to improve text readability */
+.hero::before,
+.skills::before,
+.projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.9) 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+    .hero::before,
+    .skills::before,
+    .projects::before {
+        background: linear-gradient(
+            135deg,
+            rgba(15, 23, 42, 0.95) 0%,
+            rgba(15, 23, 42, 0.9) 100%
+        );
+    }
+}
+
+/* Performance optimization - pause animations when not visible */
+@media (prefers-reduced-motion: reduce) {
+    .hero-canvas,
+    .skills-canvas,
+    .projects-canvas {
+        display: none;
+    }
+}
+
+/* Mobile optimization - lighter animation */
+@media (max-width: 768px) {
+    .hero::before,
+    .skills::before,
+    .projects::before {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.97) 0%,
+            rgba(255, 255, 255, 0.95) 100%
+        );
+    }
+}
+
+/* Additional styling for better visual integration */
+.hero {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+.skills {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+.projects {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* Ensure animations work smoothly */
+canvas {
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Optional: Add a glow effect to enhance the tech feel */
+.hero-canvas {
+    filter: blur(0.5px);
+    opacity: 0.8;
+}
+
+.skills-canvas {
+    opacity: 0.7;
+}
+
+.projects-canvas {
+    opacity: 0.6;
+}

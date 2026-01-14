@@ -3,364 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Featured Projects</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .projects {
-            padding: 60px 0;
-            background-color: #f8f9fa;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .project-image {
-            position: relative;
-            height: 200px;
-            background: #e9ecef;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .project-link {
-            width: 45px;
-            height: 45px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            background: #007bff;
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .project-description {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            background: #007bff;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .project-stats {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            display: block;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #007bff;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        .projects-cta {
-            text-align: center;
-            padding: 30px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .projects-cta p {
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: #007bff;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #0056b3;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .project-content {
-                padding: 20px;
-            }
-        }
-    </style>
+    <title>Projects - Peter Blessings Kaphaso</title>
+    <meta name="description" content="Featured projects and portfolio work by Peter Blessings Kaphaso including web and mobile applications.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <section id="projects" class="projects">
+    <header id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <span class="logo-text">PBK</span>
+                </a>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="services.html" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="experience.html" class="nav-link">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="skills.html" class="nav-link">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projects.html" class="nav-link active">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                
+                <button class="nav-toggle" id="nav-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="projects" class="projects">
+            <!-- Animated Background -->
+            <canvas id="projectsCanvas" class="projects-canvas"></canvas>
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Some of the projects I've worked on recently</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/msacco-project.jpg" alt="Msacco App Screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://msacco.online" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-badge">Sabali Solutions</div>
+                            <h3 class="project-title">Msacco Mobile App</h3>
+                            <p class="project-description">
+                                A comprehensive financial management mobile application for Msilikali SACCO members. 
+                                Features include secure transactions, loan management, account monitoring, and 
+                                real-time notifications.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-number">5K+</span>
+                                    <span class="stat-label">Active Users</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">4.8</span>
+                                    <span class="stat-label">App Rating</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/mdf-lms-project.jpg" alt="MDF LMS Screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-badge">Sabali Solutions</div>
+                            <h3 class="project-title">MDF Command & Staff College LMS</h3>
+                            <p class="project-description">
+                                Learning Management System for the Malawi Defence Force Command and Staff College. 
+                                Includes course management, assignment submission, progress tracking, and 
+                                resource sharing capabilities.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-number">50+</span>
+                                    <span class="stat-label">Students</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">2+</span>
+                                    <span class="stat-label">Courses</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/neurotech-project.png" alt="NeuroTech Website Screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://neurotechsystemsltd.com" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-badge">NeuroTech Systems</div>
+                            <h3 class="project-title">NeuroTech Systems Website</h3>
+                            <p class="project-description">
+                                Modern corporate website developed during my time at NeuroTech Systems, showcasing 
+                                the company's technological solutions and services. Features responsive design, 
+                                interactive elements, and content management capabilities.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">Chart.js</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-number">95</span>
+                                    <span class="stat-label">Performance Score</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">100%</span>
+                                    <span class="stat-label">Mobile Friendly</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="projects-cta">
+                    <p>Interested in seeing more of my work?</p>
+                    <a href="contact.html" class="btn btn-primary">Let's Build Something Together</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Some of the projects I've worked on recently</p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Peter Blessings Kaphaso</h3>
+                    <p>Full-Stack Developer & Founder of Sabali Solutions, passionate about creating digital solutions that make a difference.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/peter-kaphaso-b3522711a/" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/qr/IO5Y3FZAL3QDB1" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Navigation</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="experience.html">Experience</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>More</h4>
+                        <a href="skills.html">Skills</a>
+                        <a href="projects.html">Projects</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Resources</h4>
+                        <a href="assets/Peter_Blessings_CV.pdf" download>Download CV</a>
+                        <a href="mailto:blesskapha@outlook.com">Email Me</a>
+                    </div>
+                </div>
             </div>
             
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/msacco-project.jpg" alt="Msacco App Screenshot">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://msacco.online" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Msacco Mobile App</h3>
-                        <p class="project-description">
-                            A comprehensive financial management mobile application for Msilikali SACCO members. 
-                            Features include secure transactions, loan management, account monitoring, and 
-                            real-time notifications.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">REST API</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-number">5K+</span>
-                                <span class="stat-label">Active Users</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">4.8</span>
-                                <span class="stat-label">App Rating</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/mdf-lms-project.jpg" alt="MDF LMS Screenshot">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">MDF Command & Staff College LMS</h3>
-                        <p class="project-description">
-                            Learning Management System for the Malawi Defence Force Command and Staff College. 
-                            Includes course management, assignment submission, progress tracking, and 
-                            resource sharing capabilities.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-number">500+</span>
-                                <span class="stat-label">Students</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">10+</span>
-                                <span class="stat-label">Courses</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/neurotech-project.png" alt="NeuroTech Website Screenshot">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://neurotechsystemsltd.com" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">NeuroTech Systems Website</h3>
-                        <p class="project-description">
-                            Modern corporate website showcasing NeuroTech's technological solutions and services. 
-                            Features responsive design, interactive elements, and content management system 
-                            for easy updates.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Tailwind CSS</span>
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">Chart.js</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-number">95</span>
-                                <span class="stat-label">Performance Score</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">100%</span>
-                                <span class="stat-label">Mobile Friendly</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Peter Blessings Kaphaso. All rights reserved.</p>
             </div>
         </div>
-    </section>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        // Matrix-Style Code Rain for Projects Page
+        (function() {
+            const canvas = document.getElementById('projectsCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            let columns = [];
+            let animationId;
+
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?/~`';
+            const fontSize = 14;
+            let columnCount;
+
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+                columnCount = Math.floor(canvas.width / fontSize);
+                
+                // Initialize columns
+                columns = [];
+                for (let i = 0; i < columnCount; i++) {
+                    columns[i] = {
+                        y: Math.random() * canvas.height,
+                        speed: Math.random() * 2 + 1,
+                        opacity: Math.random() * 0.5 + 0.3
+                    };
+                }
+            }
+
+            function drawMatrix() {
+                // Semi-transparent background for trail effect
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.font = `${fontSize}px 'Courier New', monospace`;
+
+                columns.forEach((column, i) => {
+                    const char = characters[Math.floor(Math.random() * characters.length)];
+                    const x = i * fontSize;
+                    
+                    // Gradient effect - brighter at the leading edge
+                    const gradient = ctx.createLinearGradient(x, column.y - fontSize * 10, x, column.y);
+                    gradient.addColorStop(0, 'rgba(59, 130, 246, 0)');
+                    gradient.addColorStop(0.5, `rgba(59, 130, 246, ${column.opacity * 0.5})`);
+                    gradient.addColorStop(1, `rgba(59, 130, 246, ${column.opacity})`);
+                    
+                    ctx.fillStyle = gradient;
+                    ctx.fillText(char, x, column.y);
+
+                    // Leading character (brightest)
+                    ctx.fillStyle = `rgba(147, 197, 253, ${column.opacity})`;
+                    ctx.fillText(char, x, column.y);
+
+                    // Move column down
+                    column.y += column.speed;
+
+                    // Reset column when it goes off screen
+                    if (column.y > canvas.height && Math.random() > 0.975) {
+                        column.y = 0;
+                        column.speed = Math.random() * 2 + 1;
+                    }
+                });
+            }
+
+            function animate() {
+                drawMatrix();
+                animationId = requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+            });
+
+            resizeCanvas();
+            animate();
+
+            window.addEventListener('beforeunload', () => {
+                if (animationId) cancelAnimationFrame(animationId);
+            });
+        })();
+    </script>
 </body>
 </html>

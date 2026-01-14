@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Peter Blessings Kaphaso</title>
+    <meta name="description" content="Technical skills and technologies used by Peter Blessings Kaphaso including React, Laravel, Flutter, and more.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <span class="logo-text">PBK</span>
+                </a>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="services.html" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="experience.html" class="nav-link">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="skills.html" class="nav-link active">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projects.html" class="nav-link">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                
+                <button class="nav-toggle" id="nav-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="skills" class="skills">
+            <!-- Animated Background -->
+            <canvas id="skillsCanvas" class="skills-canvas"></canvas>
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Skills & Technologies</h2>
+                    <p class="section-subtitle">Technologies I work with to bring ideas to life</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-code"></i>
+                            <h3>Frontend Development</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">React</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">HTML5/CSS3</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Tailwind CSS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-server"></i>
+                            <h3>Backend Development</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Laravel</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">PHP</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">REST APIs</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile Development</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Flutter</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="92%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Dart</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">React Native</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-database"></i>
+                            <h3>Database & Tools</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">MySQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">PostgreSQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Git</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Peter Blessings Kaphaso</h3>
+                    <p>Full-Stack Developer & Founder of Sabali Solutions, passionate about creating digital solutions that make a difference.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/peter-kaphaso-b3522711a/" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/qr/IO5Y3FZAL3QDB1" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Navigation</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="experience.html">Experience</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>More</h4>
+                        <a href="skills.html">Skills</a>
+                        <a href="projects.html">Projects</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Resources</h4>
+                        <a href="assets/Peter_Blessings_CV.pdf" download>Download CV</a>
+                        <a href="mailto:blesskapha@outlook.com">Email Me</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Peter Blessings Kaphaso. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        // Floating Code Snippets Animation for Skills Page
+        (function() {
+            const canvas = document.getElementById('skillsCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            let codeSnippets = [];
+            let animationId;
+
+            const snippets = [
+                'function()', 'const x =', '{...}', 'async', 'await', 
+                'class', 'import', 'export', 'return', 'if()', 
+                'for()', 'while', '<?php', '<?=', 'public',
+                'private', 'static', 'void', 'int', 'string',
+                'flutter', 'widget', 'build()', 'setState()',
+                'React', 'useState', 'useEffect', 'props',
+                'npm', 'git', 'commit', 'push', 'pull',
+                'SQL', 'SELECT', 'INSERT', 'UPDATE', 'DELETE'
+            ];
+
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+
+            class CodeSnippet {
+                constructor() {
+                    this.text = snippets[Math.floor(Math.random() * snippets.length)];
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.3;
+                    this.vy = (Math.random() - 0.5) * 0.3;
+                    this.opacity = Math.random() * 0.3 + 0.1;
+                    this.fontSize = Math.random() * 10 + 12;
+                    this.rotation = Math.random() * Math.PI * 2;
+                    this.rotationSpeed = (Math.random() - 0.5) * 0.01;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.rotation += this.rotationSpeed;
+
+                    if (this.x < -50 || this.x > canvas.width + 50) this.vx *= -1;
+                    if (this.y < -50 || this.y > canvas.height + 50) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation);
+                    ctx.font = `${this.fontSize}px 'Courier New', monospace`;
+                    ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
+                    ctx.fillText(this.text, 0, 0);
+                    ctx.restore();
+                }
+            }
+
+            // Particle system
+            let particles = [];
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.radius = Math.random() * 1.5 + 0.5;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(59, 130, 246, 0.3)';
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                resizeCanvas();
+                codeSnippets = [];
+                particles = [];
+                
+                for (let i = 0; i < 25; i++) {
+                    codeSnippets.push(new CodeSnippet());
+                }
+                
+                for (let i = 0; i < 50; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+
+                codeSnippets.forEach(snippet => {
+                    snippet.update();
+                    snippet.draw();
+                });
+                
+                animationId = requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                init();
+            });
+
+            init();
+            animate();
+
+            window.addEventListener('beforeunload', () => {
+                if (animationId) cancelAnimationFrame(animationId);
+            });
+        })();
+    </script>
+</body>
+</html>

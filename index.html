@@ -5,50 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peter Blessings Kaphaso - Full-Stack Developer & Founder</title>
     <meta name="description" content="Professional portfolio of Peter Blessings Kaphaso, founder of Sabali Solutions and skilled full-stack developer specializing in JavaScript, Flutter, and Laravel development.">
-    <meta name="keywords" content="Peter Kaphaso, Full-Stack Developer, JavaScript, Flutter, Laravel, Web Development, Mobile Development, Sabali Solutions">
-    <meta name="author" content="Peter Blessings Kaphaso">
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
-    <!-- External fonts and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <!-- Header Navigation -->
     <header id="header">
         <nav class="navbar">
             <div class="nav-container">
-                <a href="#home" class="nav-logo">
+                <a href="index.html" class="nav-logo">
                     <span class="logo-text">PBK</span>
                 </a>
                 
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item">
-                        <a href="#home" class="nav-link">Home</a>
+                        <a href="index.html" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#about" class="nav-link">About</a>
+                        <a href="about.html" class="nav-link">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#services" class="nav-link">Services</a>
+                        <a href="services.html" class="nav-link">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#experience" class="nav-link">Experience</a>
+                        <a href="experience.html" class="nav-link">Experience</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#skills" class="nav-link">Skills</a>
+                        <a href="skills.html" class="nav-link">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#projects" class="nav-link">Projects</a>
+                        <a href="projects.html" class="nav-link">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#contact" class="nav-link">Contact</a>
+                        <a href="contact.html" class="nav-link">Contact</a>
                     </li>
                 </ul>
                 
@@ -65,6 +56,8 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
+            <!-- Animated Background -->
+            <canvas id="heroCanvas" class="hero-canvas"></canvas>
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-text">
@@ -79,7 +72,7 @@
                             digital solutions that drive business growth and enhance user experiences.
                         </p>
                         <div class="hero-buttons">
-                            <a href="#contact" class="btn btn-primary">
+                            <a href="contact.html" class="btn btn-primary">
                                 <i class="fas fa-envelope"></i>
                                 Get In Touch
                             </a>
@@ -123,648 +116,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-subtitle">Get to know more about who I am, what I do, and my current skills</p>
-                </div>
-                
-                <div class="about-content">
-                    <div class="about-text">
-                        <h3 class="about-subtitle">Who Am I?</h3>
-                        <p class="about-description">
-                            I'm a passionate full-stack developer and entrepreneur based in Salima, Malawi. As the 
-                            founder of <strong>Sabali Solutions</strong>, I've spent over 3 years creating innovative 
-                            digital solutions that solve real-world problems. My journey in software development began 
-                            with a fascination for problem-solving and has evolved into a career focused on building 
-                            impactful applications for businesses and organizations.
-                        </p>
-                        <p class="about-description">
-                            I specialize in modern web technologies and mobile development, with particular expertise in 
-                            JavaScript ecosystems, Flutter for cross-platform mobile apps, and Laravel for robust backend 
-                            systems. Through Sabali Solutions, I've delivered projects ranging from financial management 
-                            systems to enterprise learning platforms, always prioritizing clean code, scalability, and 
-                            user experience.
-                        </p>
-                                                
-                        <div class="about-highlights">
-                            <div class="highlight-item">
-                                <i class="fas fa-graduation-cap"></i>
-                                <div>
-                                    <h4>Education</h4>
-                                    <p>Bachelor's in Computer Science</p>
-                                </div>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div>
-                                    <h4>Location</h4>
-                                    <p>Salima, Malawi</p>
-                                </div>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-briefcase"></i>
-                                <div>
-                                    <h4>Experience</h4>
-                                    <p>3+ Years Professional</p>
-                                </div>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-rocket"></i>
-                                <div>
-                                    <h4>Company</h4>
-                                    <p>Founder, Sabali Solutions</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="highlight-item">
-                        <i class="fas fa-certificate"></i>
-                        <div>
-                            <h4>Certifications & Training</h4>
-                            <p>
-                                Data Analysis Essentials (Python)<br>
-                                Cyber Security Certificate<br>
-                                Parallel Programming using CUDA<br>
-                                Data Entry & Analysis (SPSS & STATA)
-                            </p>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="services">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">What I Offer</h2>
-                    <p class="section-subtitle">Comprehensive development services tailored to your needs</p>
-                </div>
-                
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="service-title">Custom Web Development</h3>
-                        <p class="service-description">
-                            Build modern, responsive websites and web applications using React, Next.js, Laravel, 
-                            and other cutting-edge technologies. From simple landing pages to complex enterprise systems.
-                        </p>
-                        <ul class="service-features">
-                            <li>Responsive Design</li>
-                            <li>Performance Optimization</li>
-                            <li>SEO Best Practices</li>
-                            <li>Content Management Systems</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3 class="service-title">Mobile App Development</h3>
-                        <p class="service-description">
-                            Create cross-platform mobile applications using Flutter that work seamlessly on both 
-                            iOS and Android. Beautiful interfaces, smooth performance, and native-like experiences.
-                        </p>
-                        <ul class="service-features">
-                            <li>iOS & Android Apps</li>
-                            <li>Push Notifications</li>
-                            <li>Offline Functionality</li>
-                            <li>App Store Deployment</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3 class="service-title">Enterprise Solutions</h3>
-                        <p class="service-description">
-                            Develop robust backend systems, APIs, and databases that power your business operations. 
-                            Scalable architecture designed for growth and reliability.
-                        </p>
-                        <ul class="service-features">
-                            <li>REST API Development</li>
-                            <li>Database Design</li>
-                            <li>System Integration</li>
-                            <li>Cloud Deployment</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3 class="service-title">Technical Consulting</h3>
-                        <p class="service-description">
-                            Get expert advice on technology choices, architecture decisions, and best practices. 
-                            Help with code reviews, performance optimization, and team training.
-                        </p>
-                        <ul class="service-features">
-                            <li>Technology Assessment</li>
-                            <li>Architecture Planning</li>
-                            <li>Code Review</li>
-                            <li>Team Training</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="services-cta">
-                    <h3>Ready to Start Your Project?</h3>
-                    <p>Let's discuss how I can help bring your ideas to life</p>
-                    <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="experience">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Professional Experience</h2>
-                    <p class="section-subtitle">My journey through various roles and responsibilities</p>
-                </div>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="job-title">Developer</h3>
-                            <p class="company">MDF Command and Staff College</p>
-                            <span class="job-period">2025 - Present</span>
-                            <p class="job-description">
-                                Currently developing and maintaining the Command and Staff College Learning Management 
-                                System. Creating user-friendly interfaces for military training and administration while 
-                                ensuring security and reliability.
-                            </p>
-                            <ul class="job-achievements">
-                                <li>Delivered comprehensive LMS platform on time and within budget</li>
-                                <li>Implemented role-based access control for secure data management</li>
-                                <li>Trained staff on system usage and provided ongoing technical support</li>
-                            </ul>
-                            <div class="job-tech">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">MySQL</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="job-title">Service Delivery Engineer</h3>
-                            <p class="company">NeuroTech Systems Limited</p>
-                            <span class="job-period">2023 - 2024</span>
-                            <p class="job-description">
-                                Led development of enterprise web applications and the company's corporate website. 
-                                Architected and implemented scalable systems while managing multiple projects and 
-                                collaborating with cross-functional teams.
-                            </p>
-                            <ul class="job-achievements">
-                                <li>Increased organizational performance by 40% through system optimization</li>
-                                <li>Developed the company's modern, responsive website from scratch</li>
-                                <li>Led a team of 4 developers on multiple client projects</li>
-                                <li>Implemented best practices for code quality and deployment</li>
-                            </ul>
-                            <div class="job-tech">
-                                <span class="tech-tag">Next.js</span>
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">Tailwind CSS</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="job-title">Founder & Lead Developer</h3>
-                            <p class="company">Sabali Solutions</p>
-                            <span class="job-period">2020 - Present</span>
-                            <p class="job-description">
-                                Founded and currently leading Sabali Solutions, a software development company focused 
-                                on creating innovative digital solutions for businesses and organizations. Managing 
-                                client relationships, project delivery, and technical development.
-                            </p>
-                            <ul class="job-achievements">
-                                <li>Successfully delivered 10+ projects for various clients</li>
-                                <li>Built the Msacco mobile app serving 5,000+ active users</li>
-                                <li>Developed enterprise LMS for educational institutions</li>
-                                <li>Established strong reputation in Malawi's tech industry</li>
-                                <li>Reduced clients' manual processes by up to 80% through automation</li>
-                            </ul>
-                            <div class="job-tech">
-                                <span class="tech-tag">Flutter</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">REST API</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Skills & Technologies</h2>
-                    <p class="section-subtitle">Technologies I work with to bring ideas to life</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <div class="category-header">
-                            <i class="fas fa-code"></i>
-                            <h3>Frontend Development</h3>
-                        </div>
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <span class="skill-name">React</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">JavaScript</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">HTML5/CSS3</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Tailwind CSS</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <div class="category-header">
-                            <i class="fas fa-server"></i>
-                            <h3>Backend Development</h3>
-                        </div>
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <span class="skill-name">Laravel</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Node.js</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="88%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">PHP</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">REST APIs</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <div class="category-header">
-                            <i class="fas fa-mobile-alt"></i>
-                            <h3>Mobile Development</h3>
-                        </div>
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <span class="skill-name">Flutter</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="92%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Dart</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">React Native</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <div class="category-header">
-                            <i class="fas fa-database"></i>
-                            <h3>Database & Tools</h3>
-                        </div>
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <span class="skill-name">MySQL</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">PostgreSQL</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Git</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-subtitle">Some of the projects I've worked on recently</p>
-                </div>
-                
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/msacco-project.jpg" alt="Msacco App Screenshot">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="https://msacco.online" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-badge">Sabali Solutions</div>
-                            <h3 class="project-title">Msacco Mobile App</h3>
-                            <p class="project-description">
-                                A comprehensive financial management mobile application for Msilikali SACCO members. 
-                                Features include secure transactions, loan management, account monitoring, and 
-                                real-time notifications.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Flutter</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">REST API</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <span class="stat-number">5K+</span>
-                                    <span class="stat-label">Active Users</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">4.8</span>
-                                    <span class="stat-label">App Rating</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/mdf-lms-project.jpg" alt="MDF LMS Screenshot">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="#" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-badge">Sabali Solutions</div>
-                            <h3 class="project-title">MDF Command & Staff College LMS</h3>
-                            <p class="project-description">
-                                Learning Management System for the Malawi Defence Force Command and Staff College. 
-                                Includes course management, assignment submission, progress tracking, and 
-                                resource sharing capabilities.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">MySQL</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <span class="stat-number">50+</span>
-                                    <span class="stat-label">Students</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">2+</span>
-                                    <span class="stat-label">Courses</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/neurotech-project.png" alt="NeuroTech Website Screenshot">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="https://neurotechsystemsltd.com" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-badge">NeuroTech Systems</div>
-                            <h3 class="project-title">NeuroTech Systems Website</h3>
-                            <p class="project-description">
-                                Modern corporate website developed during my time at NeuroTech Systems, showcasing 
-                                the company's technological solutions and services. Features responsive design, 
-                                interactive elements, and content management capabilities.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Next.js</span>
-                                <span class="tech-tag">Tailwind CSS</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">Chart.js</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <span class="stat-number">95</span>
-                                    <span class="stat-label">Performance Score</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">100%</span>
-                                    <span class="stat-label">Mobile Friendly</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="projects-cta">
-                    <p>Interested in seeing more of my work?</p>
-                    <a href="#contact" class="btn btn-primary">Let's Build Something Together</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Get In Touch</h2>
-                    <p class="section-subtitle">Ready to start your next project? Let's discuss how I can help</p>
-                </div>
-                
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Let's Connect</h3>
-                        <p>
-                            I'm always interested in hearing about new projects and opportunities. 
-                            Whether you're looking for a developer, have a question, or just want to connect, 
-                            feel free to reach out.
-                        </p>
-                        
-                        <div class="contact-methods">
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="method-info">
-                                    <h4>Email</h4>
-                                    <p>blesskapha@outlook.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div class="method-info">
-                                    <h4>Phone</h4>
-                                    <p>+265 882 801 476</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="method-info">
-                                    <h4>Location</h4>
-                                    <p>Salima, Malawi</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <i class="fab fa-whatsapp"></i>
-                                </div>
-                                <div class="method-info">
-                                    <h4>WhatsApp</h4>
-                                    <p>Available for quick chats</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="availability">
-                            <h4>Availability</h4>
-                            <p>Currently available for new projects</p>
-                            <div class="availability-status">
-                                <span class="status-dot"></span>
-                                <span>Usually responds within 24 hours</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" id="firstName" name="firstName" class="form-input" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" id="lastName" name="lastName" class="form-input" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Subject</label>
-                            <select id="subject" name="subject" class="form-input" required>
-                                <option value="">Select a subject</option>
-                                <option value="web-development">Web Development Project</option>
-                                <option value="mobile-app">Mobile App Development</option>
-                                <option value="consultation">Technical Consultation</option>
-                                <option value="collaboration">Collaboration Opportunity</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="budget" class="form-label">Project Budget (Optional)</label>
-                            <select id="budget" name="budget" class="form-input">
-                                <option value="">Select budget range</option>
-                                <option value="under-5k">Under $5,000</option>
-                                <option value="5k-10k">$5,000 - $10,000</option>
-                                <option value="10k-25k">$10,000 - $25,000</option>
-                                <option value="25k-plus">$25,000+</option>
-                                <option value="discuss">Let's discuss</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea id="message" name="message" class="form-input" rows="6" placeholder="Tell me about your project..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                        
-                        <p class="form-note">
-                            Your information is secure and will only be used to respond to your inquiry.
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
@@ -793,16 +144,16 @@
                 <div class="footer-links">
                     <div class="link-group">
                         <h4>Navigation</h4>
-                        <a href="#home">Home</a>
-                        <a href="#about">About</a>
-                        <a href="#services">Services</a>
-                        <a href="#experience">Experience</a>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="experience.html">Experience</a>
                     </div>
                     <div class="link-group">
                         <h4>More</h4>
-                        <a href="#skills">Skills</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#contact">Contact</a>
+                        <a href="skills.html">Skills</a>
+                        <a href="projects.html">Projects</a>
+                        <a href="contact.html">Contact</a>
                     </div>
                     <div class="link-group">
                         <h4>Resources</h4>
@@ -818,12 +169,103 @@
         </div>
     </footer>
 
-    <!-- Back to top button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
+    <script>
+        // Subtle Geometric Animation for Home Page
+        (function() {
+            const canvas = document.getElementById('heroCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let animationId;
+
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.radius = Math.random() * 2 + 1;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(59, 130, 246, 0.5)';
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                resizeCanvas();
+                particles = [];
+                for (let i = 0; i < 80; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function drawLines() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 150) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(59, 130, 246, ${0.2 * (1 - distance / 150)})`;
+                            ctx.lineWidth = 1;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+                
+                drawLines();
+                animationId = requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                init();
+            });
+
+            init();
+            animate();
+
+            // Cleanup on page unload
+            window.addEventListener('beforeunload', () => {
+                if (animationId) cancelAnimationFrame(animationId);
+            });
+        })();
+    </script>
 </body>
 </html>

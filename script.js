@@ -156,11 +156,11 @@
         }
     };
 
-    // Navigation Manager
+    // Navigation Manager (Updated for Multi-Page)
     const navigationManager = {
         init() {
             this.bindEvents();
-            this.updateActiveLink();
+            this.setActivePage();
         },
 
         bindEvents() {
@@ -169,26 +169,18 @@
                 elements.navToggle.addEventListener('click', this.toggleMobileMenu.bind(this));
             }
 
-            // Smooth scroll for navigation links
+            // Close mobile menu when clicking a link
             elements.navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        utils.scrollToElement(targetElement);
-                        this.closeMobileMenu();
-                    }
+                link.addEventListener('click', () => {
+                    this.closeMobileMenu();
                 });
             });
 
-            // Update active link on scroll
-            window.addEventListener('scroll', utils.throttle(this.updateActiveLink.bind(this), 100));
-
             // Close mobile menu when clicking outside
             document.addEventListener('click', (e) => {
-                if (!elements.navToggle.contains(e.target) && !elements.navMenu.contains(e.target)) {
+                if (elements.navToggle && elements.navMenu && 
+                    !elements.navToggle.contains(e.target) && 
+                    !elements.navMenu.contains(e.target)) {
                     this.closeMobileMenu();
                 }
             });
@@ -204,19 +196,27 @@
             elements.navToggle.classList.remove('active');
         },
 
-        updateActiveLink() {
-            const sections = document.querySelectorAll('section[id]');
-            const scrollPosition = window.scrollY + 100;
+        setActivePage() {
+            // Get current page filename
+            let currentPage = window.location.pathname.split('/').pop();
+            
+            // Default to index.html if empty or just /
+            if (!currentPage || currentPage === '' || currentPage === '/') {
+                currentPage = 'index.html';
+            }
 
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-                const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-                if (correspondingLink && scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    elements.navLinks.forEach(link => link.classList.remove('active'));
-                    correspondingLink.classList.add('active');
+            // Remove active class from all links
+            elements.navLinks.forEach(link => {
+                link.classList.remove('active');
+                
+                // Get the href attribute
+                const linkHref = link.getAttribute('href');
+                
+                // Check if this link matches the current page
+                if (linkHref === currentPage || 
+                    (currentPage === 'index.html' && linkHref === 'index.html') ||
+                    (currentPage === '' && linkHref === 'index.html')) {
+                    link.classList.add('active');
                 }
             });
         }
@@ -303,7 +303,7 @@
             }, observerOptions);
 
             // Observe sections and cards
-            const elementsToAnimate = document.querySelectorAll('.section-header, .about-content, .timeline-item, .skill-category, .project-card, .testimonial-card');
+            const elementsToAnimate = document.querySelectorAll('.section-header, .about-content, .timeline-item, .skill-category, .project-card, .service-card');
             elementsToAnimate.forEach(el => observer.observe(el));
         },
 
