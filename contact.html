@@ -22,6 +22,15 @@
             --border-glass: rgba(255, 255, 255, 0.1);
             --neon-glow: 0 0 15px rgba(15, 246, 255, 0.3);
             --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            
+            /* Experience page colors */
+            --bg-main: #020617;
+            --bg-elevated: rgba(15, 23, 42, 0.85);
+            --accent: #22c55e;
+            --accent-soft: rgba(34, 197, 94, 0.18);
+            --primary: #3b82f6;
+            --primary-soft: rgba(59, 130, 246, 0.16);
+            --border-subtle: rgba(148, 163, 184, 0.35);
         }
 
         /* Base Styling */
@@ -31,17 +40,154 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            background:
+                radial-gradient(circle at top left, rgba(59,130,246,0.18), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(34,197,94,0.18), transparent 55%),
+                #020617;
+            color: var(--text-main);
+            min-height: 100vh;
             overflow-x: hidden;
-            /* Prevents blank screen with subtle background glow */
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(140, 0, 255, 0.07) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(15, 246, 255, 0.07) 0%, transparent 40%);
-            background-attachment: fixed;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR - FROM EXPERIENCE PAGE */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: linear-gradient(
+                to bottom,
+                rgba(15, 23, 42, 0.92),
+                rgba(15, 23, 42, 0.7),
+                transparent
+            );
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+        }
+
+        .navbar-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0.9rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--text-main);
+        }
+
+        .nav-logo-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(59,130,246,0.9), transparent 60%),
+                radial-gradient(circle at 70% 80%, rgba(34,197,94,0.85), transparent 60%),
+                #020617;
+            border: 1px solid rgba(148,163,184,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            box-shadow: 0 0 18px rgba(59,130,246,0.55);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--text-muted);
+            font-weight: 500;
+            padding-bottom: 0.15rem;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            transition: width 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.4);
+            background: rgba(15,23,42,0.9);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 3px;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 17px;
+            height: 2px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: translateY(5px) rotate(45deg);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: translateY(-5px) rotate(-45deg);
+        }
+
+        /* MAIN SECTION */
+        main {
+            padding-top: 5.5rem;
         }
 
         /* Reveal Animation */
@@ -54,79 +200,9 @@
             animation: fadeInUp 1s forwards;
         }
 
-        /* Navbar Modernization */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 10, 12, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glass);
-            padding: 1rem 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            color: var(--text-main);
-            position: relative;
-        }
-
-        .logo-text {
-            background: linear-gradient(90deg, var(--cyan), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--cyan);
-            text-shadow: 0 0 8px rgba(15, 246, 255, 0.5);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hamburger-line {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background: var(--text-main);
-            margin: 5px 0;
-        }
-
         /* Main Contact Section */
         .contact {
-            padding: 140px 0 80px;
+            padding: 4.5rem 0 4rem;
         }
 
         .container {
@@ -325,21 +401,7 @@
             box-shadow: 0 0 10px #10b981;
         }
 
-        /* Media Queries */
-        @media (max-width: 992px) {
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .nav-toggle { display: block; }
-            .form-row { grid-template-columns: 1fr; }
-            .contact-form { padding: 2rem; }
-        }
-
-        /* Footer Preservation Styling */
+        /* FOOTER - FROM EXPERIENCE PAGE */
         .footer {
             border-top: 1px solid rgba(148,163,184,0.25);
             background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617);
@@ -437,86 +499,121 @@
             padding-top: 1.2rem;
         }
 
-        /* Back to Top */
+        /* BACK TO TOP - FROM EXPERIENCE PAGE */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 45px;
-            height: 45px;
-            background: var(--bg-glass-heavy);
-            border: 1px solid var(--border-glass);
-            color: #fff;
-            border-radius: 50%;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.6);
+            background: radial-gradient(circle at top left, rgba(59,130,246,0.35), rgba(15,23,42,0.96));
+            color: #e5e7eb;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 14px 35px rgba(15,23,42,0.9);
             cursor: pointer;
-            z-index: 100;
-            transition: 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+            z-index: 40;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         .back-to-top:hover {
-            border-color: var(--cyan);
-            color: var(--cyan);
-            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow:
+                0 18px 40px rgba(15,23,42,1),
+                0 0 20px rgba(34,197,94,0.7);
         }
-        .nav-logo-mark {
-            width: 32px;
-            height: 32px;
-            border-radius: 999px;
-            background:
-                radial-gradient(circle at 30% 20%, rgba(59,130,246,0.9), transparent 60%),
-                radial-gradient(circle at 70% 80%, rgba(34,197,94,0.85), transparent 60%),
-                #020617;
-            border: 1px solid rgba(148,163,184,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #e5e7eb;
-            box-shadow: 0 0 18px rgba(59,130,246,0.55);
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: absolute;
+                inset: 56px 1.25rem auto 1.25rem;
+                border-radius: 0.9rem;
+                background: rgba(15,23,42,0.98);
+                border: 1px solid rgba(148,163,184,0.35);
+                box-shadow: 0 22px 50px rgba(15,23,42,0.9);
+                padding: 0.7rem 0.8rem;
+                flex-direction: column;
+                gap: 0.4rem;
+                font-size: 0.9rem;
+                display: none;
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 0.35rem 0.3rem;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .form-row { 
+                grid-template-columns: 1fr; 
+            }
+            .contact-form { 
+                padding: 2rem; 
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-inner {
+                flex-direction: column;
+            }
+            .footer-main p {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-
-    <header id="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="index.html" class="nav-logo">
-                    <span class="logo-text">PBK</span>
-                </a>
+    <!-- NAVBAR - EXACT FROM EXPERIENCE PAGE -->
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-mark">PBK</div>
+            </a>
+            <nav>
                 <ul class="nav-menu" id="nav-menu">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="services.html" class="nav-link">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="experience.html" class="nav-link">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="skills.html" class="nav-link">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="projects.html" class="nav-link">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link active">Contact</a>
-                    </li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="experience.html" class="nav-link">Experience</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
                 </ul>
-                <button class="nav-toggle" id="nav-toggle">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
     <main class="animate-reveal">
@@ -609,10 +706,10 @@
                             <label for="budget" class="form-label">Project Budget (Optional)</label>
                             <select id="budget" name="budget" class="form-input">
                                 <option value="">Select budget range</option>
-                                <option value="under-5k">Under $5,000</option>
-                                <option value="5k-10k">$5,000 - $10,000</option>
-                                <option value="10k-25k">$10,000 - $25,000</option>
-                                <option value="25k-plus">$25,000+</option>
+                                <option value="under-500">Under $500</option>
+                                <option value="500-1k">$500 - $1,000</option>
+                                <option value="1k-2.5k">$1,000 - $2,500</option>
+                                <option value="2.5k-plus">$2,500+</option>
                                 <option value="discuss">Let's discuss</option>
                             </select>
                         </div>
@@ -633,8 +730,8 @@
         </section>
     </main>
 
-    <!-- ORIGINAL FOOTER UNCHANGED -->
-<footer class="footer">
+    <!-- FOOTER - EXACT FROM EXPERIENCE PAGE -->
+    <footer class="footer">
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-main">
@@ -690,31 +787,27 @@
         </div>
     </footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
     <script>
-        // Simple Navbar Toggle for Mobile
+        // Mobile nav - FROM EXPERIENCE PAGE
         const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.getElementById('nav-menu');
 
-        navToggle.addEventListener('click', () => {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            if(navMenu.style.display === 'flex') {
-                navMenu.style.flexDirection = 'column';
-                navMenu.style.position = 'absolute';
-                navMenu.style.top = '100%';
-                navMenu.style.left = '0';
-                navMenu.style.width = '100%';
-                navMenu.style.background = 'rgba(10, 10, 12, 0.95)';
-                navMenu.style.padding = '2rem';
-                navMenu.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
-            }
-        });
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("year").textContent = new Date().getFullYear();
-        });
-    </script>
-</body>
-</html>
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('open');
+            });
+
+            navMenu.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+
+        // Back to top - FROM
