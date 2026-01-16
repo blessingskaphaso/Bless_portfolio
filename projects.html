@@ -623,90 +623,100 @@
 
         /* Footer */
         .footer {
-            background-color: var(--section-bg-dark);
-            color: white;
-            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(148,163,184,0.25);
+            background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617);
+            padding: 2.8rem 0 2rem;
+            margin-top: 2.5rem;
         }
 
-        .footer-content {
+        .footer-inner {
             display: flex;
             flex-wrap: wrap;
+            gap: 2.5rem;
             justify-content: space-between;
-            gap: 2rem;
-            margin-bottom: 3rem;
+            align-items: flex-start;
         }
 
-        .footer-info {
-            flex: 2;
-            min-width: 300px;
+        .footer-main {
+            flex: 1.4;
+            min-width: 260px;
         }
 
-        .footer-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
+        .footer-main h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
         }
 
-        .footer-info p {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: #D1D5DB;
+        .footer-main p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            max-width: 360px;
         }
 
         .footer-social {
             display: flex;
-            gap: 1rem;
+            gap: 0.6rem;
+            margin-top: 1.1rem;
         }
 
         .social-link {
-            color: #D1D5DB;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            border: 1px solid rgba(148,163,184,0.5);
+            background: rgba(15,23,42,0.9);
+            transition: all 0.25s ease;
         }
 
         .social-link:hover {
-            color: var(--primary-blue);
+            color: #e5e7eb;
+            border-color: var(--accent);
+            box-shadow: 0 0 14px rgba(34,197,94,0.7);
+            transform: translateY(-1px);
         }
 
         .footer-links {
-            flex: 3;
+            flex: 1.2;
+            min-width: 260px;
             display: flex;
+            gap: 2.2rem;
             flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: space-around;
-        }
-
-        .link-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            min-width: 120px;
+            font-size: 0.86rem;
         }
 
         .link-group h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--primary-blue);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-bottom: 0.7rem;
         }
 
         .link-group a {
-            color: #D1D5DB;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--text-main);
+            opacity: 0.7;
+            transition: opacity 0.2s ease, color 0.2s ease;
         }
 
         .link-group a:hover {
-            color: var(--accent-green);
+            opacity: 1;
+            color: var(--accent);
         }
 
         .footer-bottom {
+            margin-top: 2.2rem;
             text-align: center;
-            border-top: 1px solid #4B5563;
-            padding-top: 2rem;
-            font-size: 0.9rem;
-            color: #D1D5DB;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(148,163,184,0.25);
+            padding-top: 1.2rem;
         }
 
         /* Back to Top Button */
@@ -933,10 +943,13 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
+            <div class="footer-inner">
+                <div class="footer-main">
                     <h3>Peter Blessings Kaphaso</h3>
-                    <p>Full-Stack Developer & Founder of Sabali Solutions, passionate about creating digital solutions that make a difference.</p>
+                    <p>
+                        Full‑Stack Developer &amp; Founder of Sabali Solutions, focused on building
+                        dependable digital products that unlock real value for businesses and institutions.
+                    </p>
                     <div class="footer-social">
                         <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
                             <i class="fab fa-github"></i>
@@ -947,12 +960,16 @@
                         <a href="https://x.com/kapkidMw?t=oYzYeU3yljOTr3l_b0Mz7A&s=08" target="_blank" rel="noopener" class="social-link">
                             <i class="fab fa-twitter"></i>
                         </a>
+                        <a href="https://www.instagram.com/kapkid_mw/" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                         <a href="https://wa.me/265882801476?text=Hello%20Peter,%20can%20we%20%20talk%20about%20your%20services?" 
                         target="_blank" rel="noopener" class="social-link">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
                 </div>
+
                 <div class="footer-links">
                     <div class="link-group">
                         <h4>Navigation</h4>
@@ -975,7 +992,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> Peter Blessings Kaphaso. All rights reserved.</p>
+                &copy; <span id="year"></span> Peter Blessings Kaphaso. All rights reserved.
             </div>
         </div>
     </footer>
@@ -1006,7 +1023,7 @@
             {
                 id: "msacco",
                 category: "Mobile Development",
-                dateAdded: "2023-03-15",
+                dateAdded: "20234-03-15",
                 title: "Msacco Mobile App",
                 company: "Sabali Solutions",
                 description: "A comprehensive financial management mobile application for Msilikali SACCO members. Features include secure transactions, loan management, account monitoring, and real-time notifications.",
@@ -1032,7 +1049,7 @@
                     { number: "2+", label: "Courses" }
                 ],
                 imageUrl: "assets/mdf-lms-project.jpg",
-                externalLink: "#", // No public link
+                externalLink: "frontend.msacco.online",
                 details: "This bespoke Learning Management System was developed to support the advanced educational needs of the Malawi Defence Force Command and Staff College. It offers a robust platform for delivering course materials, facilitating online assignments, tracking student progress, and fostering collaborative learning environments. The system is designed for high security and performance, ensuring confidential academic content is protected while providing a seamless learning experience for military personnel."
             },
             {
@@ -1080,7 +1097,7 @@
                     { number: "100%", label: "Mobile Friendly" }
                 ],
                 imageUrl: "assets/literature-blog-project.png",
-                externalLink: "#", // No public link
+                externalLink: "https://bleza.onrender.com",
                 details: "This blog was meticulously crafted for Rev. Fr. Geraldo Bleza Malota to share his literary and spiritual writings. The design focuses on a clean, uncluttered interface that enhances readability and encourages reflection. Special attention was given to accessibility standards and mobile-first development, ensuring a pleasant experience for all users, regardless of their device or abilities. The platform is optimized for search engines to reach a wider audience interested in spiritual and literary content."
             }
         ];
