@@ -13,14 +13,14 @@
         :root {
             --primary-blue: #3B82F6;
             --secondary-gray: #6B7280;
-            --background-dark: #0F172A; /* Dark sophisticated navy */
-            --accent-green: #10B981; /* Vibrant green */
-            --text-primary: #E0E7FF; /* Soft off-white */
-            --text-secondary: #9CA3AF; /* Medium gray */
-            --nav-bg-transparent: rgba(15, 23, 42, 0.7); /* Dark with transparency */
-            --nav-bg-solid: #0F172A; /* Solid dark for scrolled state */
-            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
-            --border-color: rgba(99, 102, 241, 0.2); /* Subtle border for elements */
+            --background-dark: #0F172A;
+            --accent-green: #10B981;
+            --text-primary: #E0E7FF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #9ca3af;
+            --text-main: #e5e7eb;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --border-color: rgba(99, 102, 241, 0.2);
         }
 
         *, *::before, *::after {
@@ -36,9 +36,9 @@
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--text-primary); /* Default text color */
-            background-color: var(--background-dark); /* Default background */
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            color: var(--text-primary);
+            background-color: var(--background-dark);
+            overflow-x: hidden;
         }
 
         .container {
@@ -83,76 +83,93 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
-        /* Header and Navigation (Consistent with Landing Page) */
+        /* NAVBAR */
         .navbar {
-            background-color: var(--nav-bg-transparent);
-            padding: 1rem 0;
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(8px);
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: linear-gradient(
+                to bottom,
+                rgba(15, 23, 42, 0.92),
+                rgba(15, 23, 42, 0.7),
+                transparent
+            );
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.25);
         }
 
-        .navbar.scrolled {
-            background-color: var(--nav-bg-solid);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
+        .navbar-inner {
+            max-width: 1120px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0.9rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .nav-logo {
-            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
             font-weight: 700;
-            color: var(--primary-blue);
-            letter-spacing: 0.05em;
-            transition: color 0.3s ease;
+            letter-spacing: 0.08em;
+            color: var(--text-primary);
         }
 
-        .nav-logo:hover {
-            color: var(--accent-green);
+        .nav-logo-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(59,130,246,0.9), transparent 60%),
+                radial-gradient(circle at 70% 80%, rgba(34,197,94,0.85), transparent 60%),
+                #020617;
+            border: 1px solid rgba(148,163,184,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            box-shadow: 0 0 18px rgba(59,130,246,0.55);
         }
 
         .nav-menu {
             display: flex;
+            align-items: center;
+            gap: 1.8rem;
             list-style: none;
-        }
-
-        .nav-item {
-            margin-left: 2.5rem;
+            font-size: 0.95rem;
         }
 
         .nav-link {
-            color: var(--text-primary);
-            font-weight: 500;
-            font-size: 1.05rem;
             position: relative;
-            padding-bottom: 0.25rem;
-            transition: color 0.3s ease;
+            color: var(--text-muted);
+            font-weight: 500;
+            padding-bottom: 0.15rem;
+            transition: color 0.25s ease;
         }
 
         .nav-link::after {
-            content: '';
+            content: "";
             position: absolute;
+            left: 0;
+            bottom: 0;
             width: 0;
             height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--accent-green);
-            transition: width 0.3s ease, left 0.3s ease;
+            border-radius: 999px;
+            background: linear-gradient(to right, var(--accent-green), var(--primary-blue));
+            transition: width 0.25s ease;
         }
 
-        .nav-link:hover::after, .nav-link.active::after {
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
             width: 100%;
-            left: 0;
         }
 
         .nav-link.active {
@@ -161,43 +178,44 @@
 
         .nav-toggle {
             display: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.4);
+            background: rgba(15,23,42,0.9);
+            align-items: center;
+            justify-content: center;
             flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 20px;
+            gap: 3px;
             cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
-            z-index: 1001; /* Ensure toggle is above menu when open */
         }
 
-        .hamburger-line {
-            display: block;
-            width: 100%;
+        .nav-toggle span {
+            width: 17px;
             height: 2px;
-            background-color: var(--text-primary);
-            transition: all 0.3s ease;
-            border-radius: 1px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            transition: transform 0.25s ease, opacity 0.25s ease;
         }
 
-        .nav-toggle.active .hamburger-line:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
+        .nav-toggle.active span:nth-child(1) {
+            transform: translateY(5px) rotate(45deg);
         }
-
-        .nav-toggle.active .hamburger-line:nth-child(2) {
+        .nav-toggle.active span:nth-child(2) {
             opacity: 0;
         }
-
-        .nav-toggle.active .hamburger-line:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+        .nav-toggle.active span:nth-child(3) {
+            transform: translateY(-5px) rotate(-45deg);
         }
 
         /* Main Content - Services Section */
+        main {
+            padding-top: 5.5rem;
+        }
+
         .services {
-            padding: 8rem 0 6rem; /* Top padding adjusted for fixed header */
+            padding: 4.5rem 0 4rem;
             min-height: 100vh;
-            /* Optional: Add a subtle background pattern or texture */
             background-image: radial-gradient(circle at center, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
         }
@@ -232,7 +250,7 @@
         }
 
         .service-card {
-            background-color: rgba(15, 23, 42, 0.8); /* Slightly transparent dark background */
+            background-color: rgba(15, 23, 42, 0.8);
             border: 1px solid var(--border-color);
             border-radius: 1rem;
             padding: 2.5rem 2rem;
@@ -272,7 +290,6 @@
             border-radius: 2px;
         }
 
-
         .service-title {
             font-size: 1.8rem;
             font-weight: 600;
@@ -284,13 +301,13 @@
             font-size: 1.05rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            flex-grow: 1; /* Allow description to take available space */
+            flex-grow: 1;
         }
 
         .service-features {
             list-style: none;
             padding: 0;
-            margin-top: auto; /* Push features to the bottom of the card */
+            margin-top: auto;
             width: 100%;
             text-align: left;
         }
@@ -309,18 +326,18 @@
         }
 
         .service-features li::before {
-            content: '\f00c'; /* FontAwesome checkmark icon */
+            content: '\f00c';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             color: var(--accent-green);
             font-size: 1.1rem;
-            line-height: 1.4; /* Align with text */
+            line-height: 1.4;
         }
 
         .services-cta {
             text-align: center;
             margin-top: 5rem;
-            background-color: rgba(99, 102, 241, 0.1); /* Slightly transparent background */
+            background-color: rgba(99, 102, 241, 0.1);
             padding: 3rem 2rem;
             border-radius: 1rem;
             box-shadow: var(--card-shadow);
@@ -340,112 +357,130 @@
             margin-bottom: 2rem;
         }
 
-        /* Footer (Consistent with Landing Page) */
+        /* FOOTER */
         .footer {
-            background-color: var(--nav-bg-solid);
-            color: var(--text-primary);
-            padding: 4rem 0 2rem;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid rgba(148,163,184,0.25);
+            background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617);
+            padding: 2.8rem 0 2rem;
+            margin-top: 2.5rem;
         }
 
-        .footer-content {
+        .footer-inner {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
             gap: 2.5rem;
-            margin-bottom: 3rem;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-        .footer-info {
-            flex: 2;
-            min-width: 300px;
+        .footer-main {
+            flex: 1.4;
+            min-width: 260px;
         }
 
-        .footer-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
+        .footer-main h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
         }
 
-        .footer-info p {
+        .footer-main p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            max-width: 360px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1.1rem;
+        }
+
+        .social-link {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
+            border: 1px solid rgba(148,163,184,0.5);
+            background: rgba(15,23,42,0.9);
+            transition: all 0.25s ease;
         }
 
-        .footer-social .social-link {
-            background-color: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-        }
-
-        .footer-social .social-link:hover {
-            background-color: var(--primary-blue);
-            color: white;
-            border-color: var(--primary-blue);
+        .social-link:hover {
+            color: #e5e7eb;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 14px rgba(34,197,94,0.7);
+            transform: translateY(-1px);
         }
 
         .footer-links {
-            flex: 3;
+            flex: 1.2;
+            min-width: 260px;
             display: flex;
+            gap: 2.2rem;
             flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: space-around;
-        }
-
-        .link-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            min-width: 120px;
+            font-size: 0.86rem;
         }
 
         .link-group h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--primary-blue);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-bottom: 0.7rem;
         }
 
         .link-group a {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--text-main);
+            opacity: 0.7;
+            transition: opacity 0.2s ease, color 0.2s ease;
         }
 
         .link-group a:hover {
+            opacity: 1;
             color: var(--accent-green);
         }
 
         .footer-bottom {
+            margin-top: 2.2rem;
             text-align: center;
-            border-top: 1px solid rgba(99, 102, 241, 0.2);
-            padding-top: 2rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(148,163,184,0.25);
+            padding-top: 1.2rem;
         }
 
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--primary-blue);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.6);
+            background: radial-gradient(circle at top left, rgba(59,130,246,0.35), rgba(15,23,42,0.96));
+            color: #e5e7eb;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 1.3rem;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            justify-content: center;
+            box-shadow: 0 14px 35px rgba(15,23,42,0.9);
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-            z-index: 100;
+            transform: translateY(8px);
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+            z-index: 40;
         }
 
         .back-to-top.show {
@@ -455,8 +490,10 @@
         }
 
         .back-to-top:hover {
-            background-color: #2563EB;
-            transform: translateY(-3px);
+            border-color: var(--accent-green);
+            box-shadow:
+                0 18px 40px rgba(15,23,42,1),
+                0 0 20px rgba(34,197,94,0.7);
         }
 
         /* Responsive Adjustments */
@@ -467,9 +504,6 @@
         }
 
         @media (max-width: 1024px) {
-            .nav-item {
-                margin-left: 1.5rem;
-            }
             .section-title {
                 font-size: 2.5rem;
             }
@@ -480,37 +514,25 @@
 
         @media (max-width: 768px) {
             .nav-menu {
-                display: none;
-                flex-direction: column;
                 position: absolute;
-                top: 80px; /* Adjust based on header height */
-                left: 0;
-                width: 100%;
-                background-color: var(--nav-bg-solid);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-                padding: 1rem 0;
-                border-top: 1px solid var(--border-color);
-                align-items: center;
+                inset: 56px 1.25rem auto 1.25rem;
+                border-radius: 0.9rem;
+                background: rgba(15,23,42,0.98);
+                border: 1px solid rgba(148,163,184,0.35);
+                box-shadow: 0 22px 50px rgba(15,23,42,0.9);
+                padding: 0.7rem 0.8rem;
+                flex-direction: column;
+                gap: 0.4rem;
+                font-size: 0.9rem;
+                display: none;
             }
 
             .nav-menu.open {
                 display: flex;
             }
 
-            .nav-item {
-                margin: 0;
-                width: 100%;
-                text-align: center;
-            }
-
             .nav-link {
-                display: block;
-                padding: 0.75rem 0;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .nav-link:last-child {
-                border-bottom: none;
+                padding: 0.35rem 0.3rem;
             }
 
             .nav-toggle {
@@ -539,26 +561,14 @@
             .services-cta p {
                 font-size: 1rem;
             }
+        }
 
-            .footer-content {
+        @media (max-width: 600px) {
+            .footer-inner {
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
             }
-            .footer-info {
-                min-width: unset;
-                width: 100%;
-            }
-            .footer-social {
-                justify-content: center;
-            }
-            .footer-links {
-                width: 100%;
-            }
-            .link-group {
-                align-items: center;
-                min-width: unset;
-                width: 50%;
+            .footer-main p {
+                max-width: 100%;
             }
         }
 
@@ -573,42 +583,27 @@
     </style>
 </head>
 <body>
-    <header id="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="index.html" class="nav-logo">
-                    <span class="logo-text">PBK</span>
-                </a>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-mark">PBK</div>
+            </a>
+            <nav>
                 <ul class="nav-menu" id="nav-menu">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="services.html" class="nav-link active">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="experience.html" class="nav-link">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="skills.html" class="nav-link">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="projects.html" class="nav-link">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">Contact</a>
-                    </li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link active">Services</a></li>
+                    <li><a href="experience.html" class="nav-link">Experience</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
-                <button class="nav-toggle" id="nav-toggle">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
     <main>
@@ -695,10 +690,13 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
+            <div class="footer-inner">
+                <div class="footer-main">
                     <h3>Peter Blessings Kaphaso</h3>
-                    <p>Full-Stack Developer & Founder of Sabali Solutions, passionate about creating digital solutions that make a difference.</p>
+                    <p>
+                        Full‑Stack Developer &amp; Founder of Sabali Solutions, focused on building
+                        dependable digital products that unlock real value for businesses and institutions.
+                    </p>
                     <div class="footer-social">
                         <a href="https://github.com/blessingskaphaso" target="_blank" rel="noopener" class="social-link">
                             <i class="fab fa-github"></i>
@@ -717,6 +715,7 @@
                         </a>
                     </div>
                 </div>
+
                 <div class="footer-links">
                     <div class="link-group">
                         <h4>Navigation</h4>
@@ -739,7 +738,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> Peter Blessings Kaphaso. All rights reserved.</p>
+                &copy; <span id="year"></span> Peter Blessings Kaphaso. All rights reserved.
             </div>
         </div>
     </footer>
@@ -749,24 +748,14 @@
     </button>
 
     <script>
-        // Header scroll effect (consistent with landing page)
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Navbar toggle for mobile (consistent with landing page)
+        // Mobile nav
         const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.getElementById('nav-menu');
 
         if (navToggle && navMenu) {
             navToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('open');
                 navToggle.classList.toggle('active');
+                navMenu.classList.toggle('open');
             });
 
             navMenu.querySelectorAll('.nav-link').forEach(link => {
@@ -777,11 +766,11 @@
             });
         }
 
-        // Back to Top Button (consistent with landing page)
+        // Back to Top Button
         const backToTopButton = document.getElementById('backToTop');
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
+            if (window.scrollY > 280) {
                 backToTopButton.classList.add('show');
             } else {
                 backToTopButton.classList.remove('show');
@@ -794,6 +783,7 @@
                 behavior: 'smooth'
             });
         });
+        
         // Set current year in footer
         document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("year").textContent = new Date().getFullYear();
